@@ -191,8 +191,8 @@
         <!-- Question 1 -->
         <fieldset>
             <legend>Select one option.</legend>
-            <label><input type="radio" name="main-choice" value="choice1" onclick="handleMainChoice()"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
-            <label><input type="radio" name="main-choice" value="choice2" onclick="handleMainChoice()"> I am a high school student filling out a bracket for my class.</label><br>
+            <label><input type="radio" name="main-choice" value="choice1" onclick="handleMainChoice()" onclick="hideQuestions()"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
+            <label><input type="radio" name="main-choice" value="choice2" onclick="handleMainChoice()" onclick="hideQuestions()"> I am a high school student filling out a bracket for my class.</label><br>
             <label><input type="radio" name="main-choice" value="choice3" onclick="handleMainChoice()"> I am a student 13 years or older filling out a bracket for myself.</label><br>
             <label><input type="radio" name="main-choice" value="choice4" onclick="handleMainChoice()"> I am 13 years or older and filling out a bracket with a group code.</label><br>
             <label><input type="radio" name="main-choice" value="choice5" onclick="handleMainChoice()"> I am a Carmel Clay Schools employee.</label><br>
@@ -662,11 +662,8 @@
         document.getElementById('school').textContent = school;
     }
     
-    
-       <div>
-           <hr>
-           <h1>This is temporary old layout</h1>
-           </div>
+    <!-- Old Code -->
+       
     
     <div class="form-row">
         <div class="form-group col">
