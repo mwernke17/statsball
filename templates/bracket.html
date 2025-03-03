@@ -4,10 +4,28 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Survey</title>
     <style>
         .hidden { display: none; }
     </style>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Reset all select dropdowns to default empty option
+    document.querySelectorAll("select").forEach(select => {
+        select.selectedIndex = 0;
+    });
+
+    // Hide all sections initially
+    document.querySelectorAll(".hidden").forEach(section => {
+        section.style.display = "none";
+    });
+
+    // Uncheck all radio buttons (if applicable)
+    document.querySelectorAll("input[type=radio]").forEach(radio => {
+        radio.checked = false;
+    });
+});
+</script>
     <script>
         function handleMainChoice() {
             const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
