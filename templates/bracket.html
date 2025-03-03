@@ -2,14 +2,13 @@
 <form action="{{ url_for('handle_data') }}" method="post">
 
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        .hidden { display: none; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    .hidden { display: none; }
+</style>
 
-
- <script>
+<script>
     function handleMainChoice() {
         const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
         const mainChoiceSection = document.getElementById('first-section'); // The section with the radio buttons
@@ -35,167 +34,10 @@
     }
 </script>
 
+<form action="{{ url_for('handle_data') }}" method="post">
+    <h1>Which best describes you?</h1>
 
-        function goToNextSectionChoice1(event) {
-            event.preventDefault();
-
-            const classCode = document.getElementById('class-code');
-            const studentCode = document.getElementById('student-code');
-
-            if (!classCode.value) {
-                alert('Please select a Class Code.');
-                classCode.focus();
-                return;
-            }
-
-            if (!studentCode.value || studentCode.value < 1 || studentCode.value > 99) {
-                alert('Please enter a valid numerical student code between 1 and 99.');
-                studentCode.focus();
-                return;
-            }
-
-            document.getElementById('firstname').textContent = "Student";
-            document.getElementById('lastname').textContent = studentCode.value;
-            document.getElementById('school').textContent = classCode.value;
-        }
-
-        function goToNextSectionChoice2(event) {
-            event.preventDefault();
-
-            const classCode = document.getElementById('class-code-hs');
-            const firstname = document.getElementById('firstname-hs');
-            const lastname = document.getElementById('lastname-hs');
-
-            if (!classCode.value) {
-                alert('Please select a Class Code.');
-                classCode.focus();
-                return;
-            }
-
-            if (!firstname.value || !lastname.value) {
-                alert('Please enter both First Name and Last Name.');
-                return;
-            }
-
-            document.getElementById('firstname').textContent = firstname.value;
-            document.getElementById('lastname').textContent = lastname.value;
-            document.getElementById('school').textContent = classCode.value;
-        }
-
-        function goToNextSectionChoice3(event) {
-            event.preventDefault();
-
-            const highSchoolSelect = document.getElementById('high-school-select');
-            const firstname = document.getElementById('firstname-hs');
-            const lastname = document.getElementById('lastname-hs');
-
-            if (!highSchoolSelect.value) {
-                alert('Please select a High School.');
-                highSchoolSelect.focus();
-                return;
-            }
-
-            if (!firstname.value || !lastname.value) {
-                alert('Please enter both First Name and Last Name.');
-                return;
-            }
-
-            document.getElementById('firstname').textContent = firstname.value;
-            document.getElementById('lastname').textContent = lastname.value;
-            document.getElementById('school').textContent = highSchoolSelect.value;
-        }
-
-        function goToNextSectionChoice4(event) {
-            event.preventDefault();
-
-            const classCode = document.getElementById('class-code-adult');
-            const firstname = document.getElementById('firstname-adult');
-            const lastname = document.getElementById('lastname-adult');
-
-            if (!classCode.value) {
-                alert('Please select a Class Code.');
-                classCode.focus();
-                return;
-            }
-
-            if (!firstname.value || !lastname.value) {
-                alert('Please enter both First Name and Last Name.');
-                return;
-            }
-
-            document.getElementById('firstname').textContent = firstname.value;
-            document.getElementById('lastname').textContent = lastname.value;
-            document.getElementById('school').textContent = classCode.value;
-        }
-
-        function goToNextSectionChoice5(event) {
-            event.preventDefault();
-
-            const building = document.getElementById('building');
-            const firstname = document.getElementById('firstname-building');
-            const lastname = document.getElementById('lastname-building');
-
-            if (!building.value) {
-                alert('Please select a Building.');
-                building.focus();
-                return;
-            }
-
-            if (!firstname.value || !lastname.value) {
-                alert('Please enter both First Name and Last Name.');
-                return;
-            }
-
-            document.getElementById('firstname').textContent = firstname.value;
-            document.getElementById('lastname').textContent = lastname.value;
-            document.getElementById('school').textContent = building.value;
-        }
-
-        function goToNextSectionChoice6(event) {
-            event.preventDefault();
-
-            const highSchoolGraduated = document.getElementById('high-school-graduated');
-            const firstname = document.getElementById('firstname-graduated');
-            const lastname = document.getElementById('lastname-graduated');
-
-            if (!highSchoolGraduated.value) {
-                alert('Please select the High School you graduated from.');
-                highSchoolGraduated.focus();
-                return;
-            }
-
-            if (!firstname.value || !lastname.value) {
-                alert('Please enter both First Name and Last Name.');
-                return;
-            }
-
-            document.getElementById('firstname').textContent = firstname.value;
-            document.getElementById('lastname').textContent = lastname.value;
-            document.getElementById('school').textContent = highSchoolGraduated.value;
-        }
-
-        function goToNextSectionChoice7(event) {
-            event.preventDefault();
-
-            const firstname = document.getElementById('firstname-child');
-            const lastname = document.getElementById('lastname-child');
-
-            if (!firstname.value || !lastname.value) {
-                alert('Please enter both First Name and Last Name.');
-                return;
-            }
-
-            document.getElementById('firstname').textContent = firstname.value;
-            document.getElementById('lastname').textContent = lastname.value;
-            document.getElementById('school').textContent = "N/A";  // Optional school for choice 7
-        }
-    </script>
-</head>
-<body>
-    <h1>Which best decribes you?</h1>
-
-    <form id="first-section">
-        <!-- Question 1 -->
+    <div id="first-section">
         <fieldset>
             <legend>Select one option.</legend>
             <label><input type="radio" name="main-choice" value="choice1" onclick="handleMainChoice()"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
@@ -206,7 +48,8 @@
             <label><input type="radio" name="main-choice" value="choice6" onclick="handleMainChoice()"> I am an adult filling out a bracket for myself.</label><br>
             <label><input type="radio" name="main-choice" value="choice7" onclick="handleMainChoice()"> I am an adult filling out a bracket for my child under 13 years of age.</label>
         </fieldset>
-    </form>
+    </div>
+
 
         <!-- Choice 1: Elementary or Middle School Student -->
         <div id="choice-1-section" class="hidden">
