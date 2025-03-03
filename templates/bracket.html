@@ -264,6 +264,7 @@
             <fieldset>
 
                     <div class="form-row">
+           <div class="form-row">
         <div class="form-group col">
             <label>Name</label>
             <input type="text" name="firstname" class="form-control" placeholder="First" required>
@@ -273,40 +274,59 @@
             <input type="text" name="lastname" class="form-control" placeholder="Last" required>
         </div>
     </div>
-                
-                <label for="school">Select a Class Code:</label>
-                <select id="class-code-hs" name="school" required>
-                    <option value="">-- Select Class Code --</option>
-                    <option value="Class1">Class1</option>
-                    <option value="Class2">Class2</option>
-                    <option value="Class3">Class3</option>
-                    <option value="Class4">Class4</option>
-                    <option value="Class5">Class5</option>
-                </select><br>
-
-             
-            <!-- Age -->
-            <label for="age">Enter your age:</label>
-            <input type="number" id="age-hs " name="age" min="13" max="19" required><br>
-
-            <!-- Writing Hand -->
-            <label for="persontype">Select your writing hand:</label>
-            <select id="persontype-hs" name="persontype" required>
-                <option value="">-- Select Writing Hand --</option>
-                <option value="0">Right</option>
-                <option value="1">Left</option>
-            </select><br>
-
-            <!-- College Basketball Knowledge -->
-            <label for="knowledge">Rate your college basketball knowledge:</label>
-            <select id="knowledge-hs " name="knowledge" required>
-                <option value="">-- Select Knowledge Level --</option>
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Age (years)</label>
+            <input type="number" name="age" class="form-control" step="1" required>
+        </div>
+        <div class="form-group col">
+            <label>I write with my</label>
+            <select name="persontype" class="custom-select" required>
+                <option value="" selected>Choose</option>
+                <option value="0">Right Hand</option>
+                <option value="1">Left Hand</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Group Affiliation</label>
+            <script>
+                function droppy() {
+                    if ($(document.getElementById('schoolselect')).val() == "other") {
+                        document.getElementById('otherschool').style.display = "block";
+                    } else {
+                        document.getElementById('otherschool').style.display = "none";
+                    }
+                }
+            </script>
+            <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+                <option value="" selected>Choose...</option>
+                {% for school in data.schools %}
+                <option value="{{school}}">{{school}}</option>
+                {% endfor %}
+                <option value="other">Other (please enter):</option>
+                <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder=""
+                    style="display:none;">
+            </select>
+        </div>
+        <div class="form-group col">
+            <label>College Basketball Knowledge</label>
+            <select name="knowledge" class="custom-select" required>
+                <option value="" selected>Choose...</option>
                 <option value="0">None</option>
                 <option value="1">Little</option>
                 <option value="2">Moderate</option>
-                <option value="3">A lot</option>
-            </select><br>
-            
+                <option value="3">A Lot</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Email (for sending updated standings)</label>
+            <input type="email" name="email" class="form-control" placeholder="you@example.com">
+        </div>
+    </div>
             <!-- State -->
             <label for="state">State you live in:</label>
             <select id="state-hs " name="state" required>
@@ -642,7 +662,9 @@
         document.getElementById('school').textContent = school;
     }
     
-    
+    <hr>
+        <h1>This is temporary old layout</h1>
+    <hr>
     
     <div class="form-row">
         <div class="form-group col">
