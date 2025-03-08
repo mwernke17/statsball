@@ -172,52 +172,6 @@
 </div>
  
 </form>
- 
- <script>
-     function toggleOtherGraduatedHighSchoolInput() {
-         const highSchoolSelect = document.getElementById('high-school-graduated');
-         const otherHighSchoolInput = document.getElementById('other-graduated-high-school-container');
- 
-         // Show the text input only when "Other" is selected
-         if (highSchoolSelect.value === 'Other') {
-             otherHighSchoolInput.classList.remove('hidden');
-         } else {
-             otherHighSchoolInput.classList.add('hidden');
-         }
-     }
- 
-     function goToNextSectionChoice6(event) {
-         event.preventDefault();
- 
-         const highSchoolGraduated = document.getElementById('high-school-graduated');
-         const firstname = document.getElementById('firstname-graduated');
-         const lastname = document.getElementById('lastname-graduated');
- 
-         if (!highSchoolGraduated.value) {
-             alert('Please select the High School you graduated from.');
-             highSchoolGraduated.focus();
-             return;
-         }
- 
-         if (!firstname.value || !lastname.value) {
-             alert('Please enter both First Name and Last Name.');
-             return;
-         }
- 
-         // Get the school name and append "Alumni" for Choice 6
-         let school = highSchoolGraduated.value;
-         if (school !== 'Other') {
-             school = school + " Alumni";  // Add Alumni to the school name if it is not "Other"
-         }
- 
-         // Update the school value
-         document.getElementById('school-select').value = school; // Set the final school variable with the updated name
- 
-         // Optionally, display the selected values (this is just for confirmation)
-         document.getElementById('firstname').textContent = firstname.value;
-         document.getElementById('lastname').textContent = lastname.value;
-         document.getElementById('school').textContent = school;
-     }
 
 <script>
      function droppy() {
