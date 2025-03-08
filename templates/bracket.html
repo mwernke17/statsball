@@ -35,11 +35,10 @@
 </script>
 
 <form action="{{ url_for('handle_data') }}" method="post">
-    <h1>Which best describes you?</h1>
+    <h1>Select the appropriate option?</h1>
 
     <div id="first-section">
         <fieldset>
-            <legend>Select one option.</legend>
             <label><input type="radio" name="main-choice" value="choice1" onclick="handleMainChoice()"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
             <label><input type="radio" name="main-choice" value="choice2" onclick="handleMainChoice()"> I am a high school student filling out a bracket for my class.</label><br>
             <label><input type="radio" name="main-choice" value="choice3" onclick="handleMainChoice()"> I am a student 13 years or older filling out a bracket for myself.</label><br>
@@ -110,35 +109,9 @@
             </fieldset>
         </div>
 
-        <!-- Choice 2: High School Student (Class) -->
-        <div id="choice-2-section" class="hidden">
-            <fieldset>
-
-    
-           <div class="form-row">
-        <div class="form-group col">
-            <label>Name</label>
-            <input type="text" name="firstname" class="form-control" placeholder="First" required>
-        </div>
-        <div class="form-group col">
-            <label>Name</label>
-            <input type="text" name="lastname" class="form-control" placeholder="Last" required>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col">
-            <label>Age (years)</label>
-            <input type="number" name="age" class="form-control" step="1" required>
-        </div>
-        <div class="form-group col">
-            <label>I write with my</label>
-            <select name="persontype" class="custom-select" required>
-                <option value="" selected>Choose</option>
-                <option value="0">Right Hand</option>
-                <option value="1">Left Hand</option>
-            </select>
-        </div>
-    </div>
+<!-- Choice 2: High School Student (Class) -->
+<div id="choice-2-section" class="hidden">
+<fieldset>
     <div class="form-row">
         <div class="form-group col">
             <label>Group Affiliation</label>
@@ -174,19 +147,47 @@
     </div>
     <div class="form-row">
         <div class="form-group col">
+            <label>First Name</label>
+            <input type="text" name="firstname" class="form-control" placeholder="First" required>
+        </div>
+        <div class="form-group col">
+            <label>Last Name</label>
+            <input type="text" name="lastname" class="form-control" placeholder="Last" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Age (years)</label>
+            <input type="number" name="age" class="form-control" step="1" min="5" max="15" required>
+        </div>
+        <div class="form-group col">
+            <label>I write with my</label>
+            <select name="persontype" class="custom-select" required>
+                <option value="" selected>Choose</option>
+                <option value="0">Right Hand</option>
+                <option value="1">Left Hand</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col">
+            <label>State you live in</label>
+             <select name="state" class="custom-select" required>
+                <option value="" selected>Choose</option>
+                <option value="">-- Select State --</option>
+                <option value="0">Indiana</option>
+                <option value="1">Alabama</option>
+                <option value="2">Alaska</option>
+                <option value="3">Arizona</option>
+        </div>
+        <div class="form-group col">
             <label>Email (for sending updated standings)</label>
             <input type="email" name="email" class="form-control" placeholder="you@example.com">
         </div>
     </div>
-            <!-- State -->
-            <label for="state">State you live in:</label>
-            <select id="state-hs " name="state" required>
-                <option value="">-- Select State --</option>
-                <option value="indiana">Indiana</option>
-                <option value="alabama">Alabama</option>
-    </select><br>
-            </fieldset>
-        </div>
+   </fieldset>
+</div>
 
         <!-- Choice 3: Student (Self) -->
 <div id="choice-3-section" class="hidden">
