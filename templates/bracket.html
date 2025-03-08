@@ -8,7 +8,7 @@
     .hidden { display: none; }
 </style>
  
- <script>
+<script>
      function handleMainChoice() {
          const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
          const mainChoiceSection = document.getElementById('first-section'); // The section with the radio buttons
@@ -32,13 +32,12 @@
          choice6Section.classList.toggle('hidden', mainChoice !== 'choice6');
          choice7Section.classList.toggle('hidden', mainChoice !== 'choice7');
      }
- </script>
+</script>
  
- <form action="{{ url_for('handle_data') }}" method="post">
- 
- 
-     <div id="first-section">
-         <fieldset>
+<form action="{{ url_for('handle_data') }}" method="post">
+  
+ <div id="first-section">
+      <fieldset>
              <legend>Select the appropriate choice:</legend>
              <label><input type="radio" name="main-choice" value="choice1" onclick="handleMainChoice()"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
              <label><input type="radio" name="main-choice" value="choice2" onclick="handleMainChoice()"> I am a high school student filling out a bracket for my class.</label><br>
@@ -47,8 +46,8 @@
              <label><input type="radio" name="main-choice" value="choice5" onclick="handleMainChoice()"> I am a Carmel Clay Schools employee.</label><br>
              <label><input type="radio" name="main-choice" value="choice6" onclick="handleMainChoice()"> I am an adult filling out a bracket for myself.</label><br>
              <label><input type="radio" name="main-choice" value="choice7" onclick="handleMainChoice()"> I am an adult filling out a bracket for my child under 13 years of age.</label>
-         </fieldset>
-     </div>
+      </fieldset>
+</div>
  
 <!-- Choice 1: Elementary or Middle School Student -->
 <div id="choice-1-section" class="hidden">
@@ -134,6 +133,25 @@
              <input type="email" name="email" class="form-control" placeholder="you@example.com">
          </div>
         </div>
+ 
+    <h3>{{data.southname}}</h3>
+    <hr> {{wholebracket("south",data.competing.southteams)}}
+    <h3>{{data.westname}}</h3>
+    <hr> {{wholebracket("west",data.competing.westteams)}}
+    <h3>{{data.eastname}}</h3>
+    <hr> {{wholebracket("east",data.competing.eastteams)}}
+    <h3>{{data.midwestname}}</h3>
+    <hr> {{wholebracket("midwest",data.competing.midwestteams)}}
+    <h3>Final Four</h3>
+    <hr>
+    <div class="form-row" style="min-width:800px;">
+        {{simpleRound("F",4,4)}} {{simpleRound("F",5,2)}} {{simpleRound("F",6,1)}}
+    </div>
+    Please do not click submit until you have the entire bracket filled out.
+    <div class="form-row">
+        <button type="submit" class="btn btn-success btn-submit">Submit</button>
+    </div>
+ 
 </fieldset>
 </div>
 
