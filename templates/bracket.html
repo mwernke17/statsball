@@ -41,10 +41,10 @@
              <legend>Select the appropriate choice:</legend>
              <label><input type="radio" name="main-choice" value="choice1" onclick="handleMainChoice()"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
              <label><input type="radio" name="main-choice" value="choice2" onclick="handleMainChoice()"> I am a high school student filling out a bracket for my class.</label><br>
-             <label><input type="radio" name="main-choice" value="choice3" onclick="handleMainChoice()"> I am a student 13 years or older filling out a bracket for myself.</label><br>
-             <label><input type="radio" name="main-choice" value="choice4" onclick="handleMainChoice()"> I am 13 years or older and filling out a bracket with a group code.</label><br>
-             <label><input type="radio" name="main-choice" value="choice5" onclick="handleMainChoice()"> I am a Carmel Clay Schools employee.</label><br>
-             <label><input type="radio" name="main-choice" value="choice6" onclick="handleMainChoice()"> I am an adult filling out a bracket for myself.</label><br>
+             <label><input type="radio" name="main-choice" value="choice3" onclick="handleMainChoice()"> I am a Carmel Clay Schools employee.</label><br>
+             <label><input type="radio" name="main-choice" value="choice4" onclick="handleMainChoice()"> I am a student 13 years or older and filling out a bracket WITH a group code.</label><br>
+             <label><input type="radio" name="main-choice" value="choice5" onclick="handleMainChoice()"> I am a student 13 years or older filling out a bracket WITHOUT a group code.</label><br>
+             <label><input type="radio" name="main-choice" value="choice6" onclick="handleMainChoice()"> I am an adult filling out a bracket WITHOUT a group code.</label><br>
              <label><input type="radio" name="main-choice" value="choice7" onclick="handleMainChoice()"> I am an adult filling out a bracket for my child under 13 years of age.</label>
       </fieldset>
 </div>
@@ -155,38 +155,38 @@
 </fieldset>
 </div>
 
-<!-- Choice 3: Student (Self) -->
+<!-- Choice 3: Carmel Clay Schools Employee -->
 <div id="choice-3-section" class="hidden">
 <fieldset>
-        <legend>Individual Student</legend>
+         <legend>Carmel Clay Schools Employee</legend>      
 </fieldset>
 </div>
 
-<!-- Choice 4: Adult filling out a bracket with a group code -->
-<div id="choice-1-section" class="hidden">
+<!-- Choice 4: Student WITH Code -->
+<div id="choice-4-section" class="hidden">
+<fieldset>
+        <legend>Student WITH Code</legend>
+</fieldset>
+</div>
+
+<!-- Choice 5: Student WITHOUT Code -->
+<div id="choice-5-section" class="hidden">
 <fieldset>
         <legend>Adult with Group Code</legend>
 </fieldset>
 </div>
 
-
-<!-- Choice 5: Carmel Clay Schools Employee -->
-<div id="choice-5-section" class="hidden">
-<fieldset>
-         <legend>Carmel Clay Schools Employee</legend>      
-</fieldset>
-</div>
  
-<!-- Choice 6: Adult filling out a bracket for themselves -->
+<!-- Choice 6: Adult WITHOUT Code -->
 <div id="choice-6-section" class="hidden">
 <fieldset>
-         <legend>Adult - High School Graduated</legend>        
+         <legend>Adult WITHOUT Code</legend>        
 </fieldset>
 </div>
  
-<!-- Choice 7: Adult filling out a bracket for their child under 13 -->
+<!-- Choice 7: Adult filling out for child -->
 <div id="choice-7-section" class="hidden">
-         <legend>Child under 13</legend>
+         <legend>Adult Completing for Child under 13</legend>
 </fieldset>
 </div>
  
