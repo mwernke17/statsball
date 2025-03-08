@@ -2,7 +2,552 @@
 <form action="{{ url_for('handle_data') }}" method="post">
 
 
-
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+     .hidden { display: none; }
+ </style>
+ 
+ <script>
+     function handleMainChoice() {
+         const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
+         const mainChoiceSection = document.getElementById('first-section'); // The section with the radio buttons
+         const choice1Section = document.getElementById('choice-1-section');
+         const choice2Section = document.getElementById('choice-2-section');
+         const choice3Section = document.getElementById('choice-3-section');
+         const choice4Section = document.getElementById('choice-4-section');
+         const choice5Section = document.getElementById('choice-5-section');
+         const choice6Section = document.getElementById('choice-6-section');
+         const choice7Section = document.getElementById('choice-7-section');
+ 
+         // Hide the initial question section
+         mainChoiceSection.classList.add('hidden');
+ 
+         // Show the selected section
+         choice1Section.classList.toggle('hidden', mainChoice !== 'choice1');
+         choice2Section.classList.toggle('hidden', mainChoice !== 'choice2');
+         choice3Section.classList.toggle('hidden', mainChoice !== 'choice3');
+         choice4Section.classList.toggle('hidden', mainChoice !== 'choice4');
+         choice5Section.classList.toggle('hidden', mainChoice !== 'choice5');
+         choice6Section.classList.toggle('hidden', mainChoice !== 'choice6');
+         choice7Section.classList.toggle('hidden', mainChoice !== 'choice7');
+     }
+ </script>
+ 
+ <form action="{{ url_for('handle_data') }}" method="post">
+ 
+ 
+     <div id="first-section">
+         <fieldset>
+             <legend>Select the appropriate choice:</legend>
+             <label><input type="radio" name="main-choice" value="choice1" onclick="handleMainChoice()"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
+             <label><input type="radio" name="main-choice" value="choice2" onclick="handleMainChoice()"> I am a high school student filling out a bracket for my class.</label><br>
+             <label><input type="radio" name="main-choice" value="choice3" onclick="handleMainChoice()"> I am a student 13 years or older filling out a bracket for myself.</label><br>
+             <label><input type="radio" name="main-choice" value="choice4" onclick="handleMainChoice()"> I am 13 years or older and filling out a bracket with a group code.</label><br>
+             <label><input type="radio" name="main-choice" value="choice5" onclick="handleMainChoice()"> I am a Carmel Clay Schools employee.</label><br>
+             <label><input type="radio" name="main-choice" value="choice6" onclick="handleMainChoice()"> I am an adult filling out a bracket for myself.</label><br>
+             <label><input type="radio" name="main-choice" value="choice7" onclick="handleMainChoice()"> I am an adult filling out a bracket for my child under 13 years of age.</label>
+         </fieldset>
+     </div>
+ 
+ 
+         <!-- Choice 1: Elementary or Middle School Student -->
+         <div id="choice-1-section" class="hidden">
+             <fieldset>
+                 <legend>Elementary/Middle School Details</legend>
+                 <label for="class-code">Select a Group Code:</label>
+             <script>
+                 function droppy() {
+                     if ($(document.getElementById('schoolselect')).val() == "other") {
+                         document.getElementById('otherschool').style.display = "block";
+                     } else {
+                         document.getElementById('otherschool').style.display = "none";
+                     }
+                 }
+             </script>
+ <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+                 <option value="" selected>Choose...</option>
+                 {% for school in data.schools %}
+                 <option value="{{school}}">{{school}}</option>
+                 {% endfor %}
+                 <option value="other">Other (please enter):</option>
+                 <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder=""
+                     style="display:none;">
+             </select>
+ 
+                 <label for="student-code">Enter your numerical student code (1-99):</label>
+                 <input type="number" id="student-code" name="student-code" min="1" max="99" required><br>
+ 
+             <!-- Age -->
+             <label for="age">Enter your age:</label>
+             <input type="number" id="age-el-ms" name="age" min="5" max="15" required><br>
+ 
+             <!-- Writing Hand -->
+             <label for="persontype">Select your writing hand:</label>
+             <select id="persontype age-el-ms" name="persontype" required>
+                 <option value="">-- Select Writing Hand --</option>
+                 <option value="0">Right</option>
+                 <option value="1">Left</option>
+             </select><br>
+ 
+             <!-- College Basketball Knowledge -->
+             <label for="knowledge">Rate your college basketball knowledge:</label>
+             <select id="knowledge-el-ms " name="knowledge" required>
+                 <option value="">-- Select Knowledge Level --</option>
+                 <option value="0">None</option>
+                 <option value="1">Little</option>
+                 <option value="2">Moderate</option>
+                 <option value="3">A lot</option>
+             </select><br>
+ 
+             <!-- State -->
+             <label for="state">State you live in:</label>
+             <select id="state-el-ms" name="state" required>
+                 <option value="">-- Select State --</option>
+                 <option value="indiana">Indiana</option>
+                 <option value="alabama">Alabama</option>
+     </select><br>
+             </fieldset>
+         </div>
+ 
+ <!-- Choice 2: High School Student (Class) -->
+ <div id="choice-2-section" class="hidden">
+ <fieldset>
+     <div class="form-row">
+         <div class="form-group col">
+             <label>Group Affiliation</label>
+             <script>
+                 function droppy() {
+                     if ($(document.getElementById('schoolselect')).val() == "other") {
+                         document.getElementById('otherschool').style.display = "block";
+                     } else {
+                         document.getElementById('otherschool').style.display = "none";
+                     }
+                 }
+             </script>
+             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+                 <option value="" selected>Choose...</option>
+                 {% for school in data.schools %}
+                 <option value="{{school}}">{{school}}</option>
+                 {% endfor %}
+                 <option value="other">Other (please enter):</option>
+                 <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder=""
+                     style="display:none;">
+             </select>
+         </div>
+         <div class="form-group col">
+             <label>College Basketball Knowledge</label>
+             <select name="knowledge" class="custom-select" required>
+                 <option value="" selected>Choose...</option>
+                 <option value="0">None</option>
+                 <option value="1">Little</option>
+                 <option value="2">Moderate</option>
+                 <option value="3">A Lot</option>
+             </select>
+         </div>
+     </div>
+     <div class="form-row">
+         <div class="form-group col">
+             <label>First Name</label>
+             <input type="text" name="firstname" class="form-control" placeholder="First" required>
+         </div>
+         <div class="form-group col">
+             <label>Last Name</label>
+             <input type="text" name="lastname" class="form-control" placeholder="Last" required>
+         </div>
+     </div>
+     <div class="form-row">
+         <div class="form-group col">
+             <label>Age (years)</label>
+             <input type="number" name="age" class="form-control" step="1" min="1" max="99" required>
+         </div>
+         <div class="form-group col">
+             <label>I write with my</label>
+             <select name="persontype" class="custom-select" required>
+                 <option value="" selected>Choose...</option>
+                 <option value="0">Right Hand</option>
+                 <option value="1">Left Hand</option>
+             </select>
+         </div>
+     </div>
+         <div class="form-row">
+         <div class="form-group col">
+              <label>State you live in</label>
+              <select name="state" class="custom-select" required>
+                 <option value="" selected>Choose...</option>
+                 <option value="0">Indiana</option>
+                 <option value="1">Alabama</option>
+                 <option value="2">Alaska</option>
+                 <option value="3">Arizona</option>
+              </select>
+         </div>
+         <div class="form-group col">
+             <label>Email (for sending updated standings)</label>
+             <input type="email" name="email" class="form-control" placeholder="you@example.com">
+         </div>
+        </div>
+     </fieldset>
+ </div>
+ 
+ <!-- Choice 3: Student (Self)-->
+ <div id="choice-3-section" class="hidden">
+ <fieldset>
+     <div class="form-row">
+         <div class="form-group col">
+             <label>Current School</label>
+             <script>
+                 function droppy() {
+                     if ($(document.getElementById('schoolselect')).val() == "other") {
+                         document.getElementById('otherschool').style.display = "block";
+                     } else {
+                         document.getElementById('otherschool').style.display = "none";
+                     }
+                 }
+             </script>
+             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+                 <option value="" selected>Choose...</option>
+                 {% for school in data.schools %}
+                 <option value="{{school}}">{{school}}</option>
+                 {% endfor %}
+                 <option value="other">Other (please enter):</option>
+                 <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder=""
+                     style="display:none;">
+             </select>
+         </div>
+ 
+         <div class="form-group col">
+            <label for="school">Select School Attending:</label>
+             <select id="high-school-attending" name="school" required onchange="toggleOtherHighSchoolInput()">
+                 <option value="">-- Select School --</option>
+                 <option value="CHS">Carmel High School</option>
+                 <option value="NHS">Noblesville High School</option>
+                 <option value="WHS">Westfield High School</option>
+                 <option value="HSE">Hamilton Southeastern High School</option>
+                 <option value="Fishers">Fishers High School</option>
+                 <option value="Other">Other</option>
+             </select>
+         </div>
+ 
+         <div class="form-group col">
+             <label>College Basketball Knowledge</label>
+             <select name="knowledge" class="custom-select" required>
+                 <option value="" selected>Choose...</option>
+                 <option value="0">None</option>
+                 <option value="1">Little</option>
+                 <option value="2">Moderate</option>
+                 <option value="3">A Lot</option>
+             </select>
+         </div>
+     </div>
+     <div class="form-row">
+         <div class="form-group col">
+             <label>First Name</label>
+             <input type="text" name="firstname" class="form-control" placeholder="First" required>
+         </div>
+         <div class="form-group col">
+             <label>Last Name</label>
+             <input type="text" name="lastname" class="form-control" placeholder="Last" required>
+         </div>
+     </div>
+     <div class="form-row">
+         <div class="form-group col">
+             <label>Age (years)</label>
+             <input type="number" name="age" class="form-control" step="1" min="1" max="99" required>
+         </div>
+         <div class="form-group col">
+             <label>I write with my</label>
+             <select name="persontype" class="custom-select" required>
+                 <option value="" selected>Choose...</option>
+                 <option value="0">Right Hand</option>
+                 <option value="1">Left Hand</option>
+             </select>
+         </div>
+     </div>
+         <div class="form-row">
+         <div class="form-group col">
+              <label>State you live in</label>
+              <select name="state" class="custom-select" required>
+                 <option value="" selected>Choose...</option>
+                 <option value="0">Indiana</option>
+                 <option value="1">Alabama</option>
+                 <option value="2">Alaska</option>
+                 <option value="3">Arizona</option>
+              </select>
+         </div>
+         <div class="form-group col">
+             <label>Email (for sending updated standings)</label>
+             <input type="email" name="email" class="form-control" placeholder="you@example.com">
+         </div>
+        </div>
+     </fieldset>
+ </div>
+ 
+ <script>
+     function toggleOtherHighSchoolInput() {
+         const highSchoolSelect = document.getElementById('high-school-attending');
+         const otherHighSchoolInput = document.getElementById('other-high-school-container');
+ 
+         // Show the text input only when "Other" is selected
+         if (highSchoolSelect.value === 'Other') {
+             otherHighSchoolInput.classList.remove('hidden');
+         } else {
+             otherHighSchoolInput.classList.add('hidden');
+         }
+     }
+ </script>
+ 
+        <!-- Choice 4: Adult filling out a bracket with a group code -->
+ <div id="choice-4-section" class="hidden">
+     <fieldset>
+         <legend>Adult with Group Code</legend>
+         <label for="class-code-adult">Select a Group Code:</label>
+         <select id="class-code-adult" name="class-code-adult" required>
+             <option value="">-- Select Code --</option>
+             <option value="Class1">Class1</option>
+             <option value="Class2">Class2</option>
+             <option value="Class3">Class3</option>
+             <option value="Class4">Class4</option>
+             <option value="Class5">Class5</option>
+         </select><br>
+ 
+         <label for="firstname ">First Name:</label>
+         <input type="text" id="firstname-adult" name="firstname " required><br>
+ 
+         <label for="lastname ">Last Name:</label>
+         <input type="text" id="lastname-adult" name="lastname " required><br>
+ 
+             <!-- Age -->
+             <label for="age">Enter your age:</label>
+             <input type="number" id="age-adult" name="age" min="13" max="99" required><br>
+ 
+             <!-- Writing Hand -->
+             <label for="persontype">Select your writing hand:</label>
+             <select id="persontype-adult" name="persontype" required>
+                 <option value="">-- Select Writing Hand --</option>
+                 <option value="0">Right</option>
+                 <option value="1">Left</option>
+             </select><br>
+ 
+             <!-- College Basketball Knowledge -->
+             <label for="knowledge">Rate your college basketball knowledge:</label>
+             <select id="knowledge-adult " name="knowledge" required>
+                 <option value="">-- Select Knowledge Level --</option>
+                 <option value="0">None</option>
+                 <option value="1">Little</option>
+                 <option value="2">Moderate</option>
+                 <option value="3">A lot</option>
+             </select><br>
+ 
+             <!-- State -->
+             <label for="state">State you live in:</label>
+             <select id="state-adult " name="state" required>
+                 <option value="">-- Select State --</option>
+                 <option value="indiana">Indiana</option>
+                 <option value="alabama">Alabama</option>
+     </select><br>
+     </fieldset>
+ </div>
+ 
+ <!-- Choice 5: Carmel Clay Schools Employee -->
+ <div id="choice-5-section" class="hidden">
+     <fieldset>
+         <legend>Carmel Clay Schools Employee</legend>
+         <label for="school">Select your Building:</label>
+         <select id="building" name="school" required>
+             <option value="">-- Select Building --</option>
+             <option value="CHS">Carmel High School</option>
+             <option value="Clay">Clay Middle School</option>
+             <option value="Carmel">Carmel Elementary</option>
+             <option value="Creekside">Creekside Middle School</option>
+             <option value="ESC">ESC (Educational Services Center)</option>
+             <option value="Other">Other</option>
+         </select><br>
+ 
+         <label for="firstname ">First Name:</label>
+         <input type="text" id="firstname-building" name="firstname " required><br>
+ 
+         <label for="lastname ">Last Name:</label>
+         <input type="text" id="lastname-building" name="lastname " required><br>
+ 
+             <!-- Age -->
+             <label for="age">Enter your age:</label>
+             <input type="number" id="age-building " name="age" min="18" max="99" required><br>
+ 
+             <!-- Writing Hand -->
+             <label for="persontype">Select your writing hand:</label>
+             <select id="persontype-building" name="persontype" required>
+                 <option value="">-- Select Writing Hand --</option>
+                 <option value="0">Right</option>
+                 <option value="1">Left</option>
+             </select><br>
+ 
+             <!-- College Basketball Knowledge -->
+             <label for="knowledge">Rate your college basketball knowledge:</label>
+             <select id="knowledge-building " name="knowledge" required>
+                 <option value="">-- Select Knowledge Level --</option>
+                 <option value="0">None</option>
+                 <option value="1">Little</option>
+                 <option value="2">Moderate</option>
+                 <option value="3">A lot</option>
+             </select><br>
+ 
+             <!-- State -->
+             <label for="state">State you live in:</label>
+             <select id="state-building" name="state" required>
+                 <option value="">-- Select State --</option>
+                 <option value="indiana">Indiana</option>
+                 <option value="alabama">Alabama</option>
+     </select><br>
+     </fieldset>
+ </div>
+ 
+ <!-- Choice 6: Adult filling out a bracket for themselves -->
+ <div id="choice-6-section" class="hidden">
+     <fieldset>
+         <legend>Adult - High School Graduated</legend>
+         <label for="high-school-graduated">Select High School Graduated From:</label>
+         <select id="high-school-graduated" name="high-school-graduated" required onchange="toggleOtherGraduatedHighSchoolInput()">
+             <option value="">-- Select High School --</option>
+             <option value="CHS">Carmel High School</option>
+             <option value="Other">Other</option>
+         </select><br>
+ 
+         <div id="other-graduated-high-school-container" class="hidden">
+             <label for="other-graduated-high-school">Please enter the name of your high school:</label>
+             <input type="text" id="other-graduated-high-school" name="other-graduated-high-school"><br>
+         </div>
+ 
+         <label for="firstname ">First Name:</label>
+         <input type="text" id="firstname-graduated" name="firstname" required><br>
+ 
+         <label for="lastname ">Last Name:</label>
+         <input type="text" id="lastname-graduated" name="lastname" required><br>
+ 
+                     <!-- Age -->
+             <label for="age">Enter your age:</label>
+             <input type="number" id="age-graduated" name="age" min="18" max="99" required><br>
+ 
+             <!-- Writing Hand -->
+             <label for="persontype">Select your writing hand:</label>
+             <select id="persontype-graduated" name="persontype" required>
+                 <option value="">-- Select Writing Hand --</option>
+                 <option value="0">Right</option>
+                 <option value="1">Left</option>
+             </select><br>
+ 
+             <!-- College Basketball Knowledge -->
+             <label for="knowledge">Rate your college basketball knowledge:</label>
+             <select id="knowledge-graduated" name="knowledge" required>
+                 <option value="">-- Select Knowledge Level --</option>
+                 <option value="0">None</option>
+                 <option value="1">Little</option>
+                 <option value="2">Moderate</option>
+                 <option value="3">A lot</option>
+             </select><br>
+ 
+             <!-- State -->
+             <label for="state">State you live in:</label>
+             <select id="state-graduated" name="state" required>
+                 <option value="">-- Select State --</option>
+                 <option value="indiana">Indiana</option>
+                 <option value="alabama">Alabama</option>
+     </select><br>
+     </fieldset>
+ </div>
+ 
+ <!-- Choice 7: Adult filling out a bracket for their child under 13 -->
+ <div id="choice-7-section" class="hidden">
+     <fieldset>
+         <legend>Adult with Child under 13</legend>
+         <label for="school">Optional: Enter School:</label>
+         <input type="text" id="school" name="school"><br>
+ 
+        <label for="firstname">Child's First Name:</label>
+         <input type="text" id="firstname-child" name="firstname" required><br>
+ 
+         <label for="lastname">Child's Last Name:</label>
+         <input type="text" id="lastname-child" name="lastname" required><br>
+ 
+                  <!-- Age -->
+             <label for="age">Enter child's age:</label>
+             <input type="number" id="age-child" name="age" min="1" max="12" required><br>
+ 
+             <!-- Writing Hand -->
+             <label for="persontype">Select child's writing hand:</label>
+             <select id="persontype-child" name="persontype" required>
+                 <option value="">-- Select Writing Hand --</option>
+                 <option value="0">Right</option>
+                 <option value="1">Left</option>
+             </select><br>
+ 
+             <!-- College Basketball Knowledge -->
+             <label for="knowledge">Rate child's college basketball knowledge:</label>
+             <select id="knowledge-child" name="knowledge" required>
+                 <option value="">-- Select Knowledge Level --</option>
+                 <option value="0">None</option>
+                 <option value="1">Little</option>
+                 <option value="2">Moderate</option>
+                 <option value="3">A lot</option>
+             </select><br>
+ 
+             <!-- State -->
+             <label for="state">State child lives in:</label>
+             <select id="state-child" name="state" required>
+                 <option value="">-- Select State --</option>
+                 <option value="indiana">Indiana</option>
+                 <option value="alabama">Alabama</option>
+     </select><br>
+ 
+     </fieldset>
+ </div>
+ 
+     </form>
+ 
+ <script>
+     function toggleOtherGraduatedHighSchoolInput() {
+         const highSchoolSelect = document.getElementById('high-school-graduated');
+         const otherHighSchoolInput = document.getElementById('other-graduated-high-school-container');
+ 
+         // Show the text input only when "Other" is selected
+         if (highSchoolSelect.value === 'Other') {
+             otherHighSchoolInput.classList.remove('hidden');
+         } else {
+             otherHighSchoolInput.classList.add('hidden');
+         }
+     }
+ 
+     function goToNextSectionChoice6(event) {
+         event.preventDefault();
+ 
+         const highSchoolGraduated = document.getElementById('high-school-graduated');
+         const firstname = document.getElementById('firstname-graduated');
+         const lastname = document.getElementById('lastname-graduated');
+ 
+         if (!highSchoolGraduated.value) {
+             alert('Please select the High School you graduated from.');
+             highSchoolGraduated.focus();
+             return;
+         }
+ 
+         if (!firstname.value || !lastname.value) {
+             alert('Please enter both First Name and Last Name.');
+             return;
+         }
+ 
+         // Get the school name and append "Alumni" for Choice 6
+         let school = highSchoolGraduated.value;
+         if (school !== 'Other') {
+             school = school + " Alumni";  // Add Alumni to the school name if it is not "Other"
+         }
+ 
+         // Update the school value
+         document.getElementById('school-select').value = school; // Set the final school variable with the updated name
+ 
+         // Optionally, display the selected values (this is just for confirmation)
+         document.getElementById('firstname').textContent = firstname.value;
+         document.getElementById('lastname').textContent = lastname.value;
+         document.getElementById('school').textContent = school;
+     }
 
 
     
