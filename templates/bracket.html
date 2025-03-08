@@ -35,10 +35,10 @@
 </script>
 
 <form action="{{ url_for('handle_data') }}" method="post">
-    <h1>Select the appropriate option?</h1>
 
     <div id="first-section">
         <fieldset>
+            <legend>Select the option that fits you:</legend>
             <label><input type="radio" name="main-choice" value="choice1" onclick="handleMainChoice()"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
             <label><input type="radio" name="main-choice" value="choice2" onclick="handleMainChoice()"> I am a high school student filling out a bracket for my class.</label><br>
             <label><input type="radio" name="main-choice" value="choice3" onclick="handleMainChoice()"> I am a student 13 years or older filling out a bracket for myself.</label><br>
