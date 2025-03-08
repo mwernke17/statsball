@@ -1,7 +1,6 @@
 {% extends "template.html" %} {% block content %}
 <form action="{{ url_for('handle_data') }}" method="post">
 
-    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
@@ -548,10 +547,9 @@
         document.getElementById('lastname').textContent = lastname.value;
         document.getElementById('school').textContent = school;
     }
-    
-    <!-- Bracket Code -->
-     
-  
+
+
+
     <h3>{{data.southname}}</h3>
     <hr> {{wholebracket("south",data.competing.southteams)}}
     <h3>{{data.westname}}</h3>
