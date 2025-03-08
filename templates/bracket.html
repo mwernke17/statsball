@@ -280,63 +280,6 @@
        </div>
     </fieldset>
 </div>
-        <!-- Choice 3: Student (Self) -->
-<div id="choice-3-section" class="hidden">
-    <fieldset>
-        <legend>Student - Bracket for Myself</legend>
-        <label for="school">Select School Attending:</label>
-        <select id="high-school-attending" name="school" required onchange="toggleOtherHighSchoolInput()">
-            <option value="">-- Select School --</option>
-            <option value="CHS">Carmel High School</option>
-            <option value="NHS">Noblesville High School</option>
-            <option value="WHS">Westfield High School</option>
-            <option value="HSE">Hamilton Southeastern High School</option>
-            <option value="Fishers">Fishers High School</option>
-            <option value="Other">Other</option>
-        </select><br>
-
-        <div id="other-high-school-container" class="hidden">
-            <label for="other-high-school">Please enter the name of your school:</label>
-            <input type="text" id="other-high-school" name="other-high-school"><br>
-        </div>
-
-        <label for="firstname ">First Name:</label>
-        <input type="text" id="firstname-high-school" name="firstname " required><br>
-
-        <label for="lastname ">Last Name:</label>
-        <input type="text" id="lastname-high-school" name="lastname " required><br>
-
-            <!-- Age -->
-            <label for="age">Enter your age:</label>
-            <input type="number" id="age-high-school " name="age" min="13" max="19" required><br>
-
-            <!-- Writing Hand -->
-            <label for="persontype">Select your writing hand:</label>
-            <select id="persontype-high-school" name="persontype" required>
-                <option value="">-- Select Writing Hand --</option>
-                <option value="0">Right</option>
-                <option value="1">Left</option>
-            </select><br>
-
-            <!-- College Basketball Knowledge -->
-            <label for="knowledge">Rate your college basketball knowledge:</label>
-            <select id="knowledge-high-school " name="knowledge" required>
-                <option value="">-- Select Knowledge Level --</option>
-                <option value="0">None</option>
-                <option value="1">Little</option>
-                <option value="2">Moderate</option>
-                <option value="3">A lot</option>
-            </select><br>
-            
-            <!-- State -->
-            <label for="state">State you live in:</label>
-            <select id="state-high-school " name="state" required>
-                <option value="">-- Select State --</option>
-                <option value="indiana">Indiana</option>
-                <option value="alabama">Alabama</option>
-    </select><br>
-    </fieldset>
-</div>
 
 <script>
     function toggleOtherHighSchoolInput() {
