@@ -1,5 +1,5 @@
 {% extends "template.html" %} {% block content %}
-<form action="{{ url_for('handle_data') }}" method="post">
+
 
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -202,24 +202,5 @@
             }
 </script>
  
-
-    <h3>{{data.southname}}</h3>
-    <hr> {{wholebracket("south",data.competing.southteams)}}
-    <h3>{{data.westname}}</h3>
-    <hr> {{wholebracket("west",data.competing.westteams)}}
-    <h3>{{data.eastname}}</h3>
-    <hr> {{wholebracket("east",data.competing.eastteams)}}
-    <h3>{{data.midwestname}}</h3>
-    <hr> {{wholebracket("midwest",data.competing.midwestteams)}}
-    <h3>Final Four</h3>
-    <hr>
-    <div class="form-row" style="min-width:800px;">
-        {{simpleRound("F",4,4)}} {{simpleRound("F",5,2)}} {{simpleRound("F",6,1)}}
-    </div>
-    Please do not click submit until you have the entire bracket filled out.
-    <div class="form-row">
-        <button type="submit" class="btn btn-success btn-submit">Submit</button>
-    </div>
-</form>
 <script src="static/js/bracket.js"></script>
 {% endblock %}
