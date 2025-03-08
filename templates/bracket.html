@@ -35,8 +35,34 @@
 </script>
  
 <form action="{{ url_for('handle_data') }}" method="post">
-  
- <div id="first-section">
+
+<div>
+       <div class="form-row">
+         <div class="form-group col">
+             <label>Group/Class:</label>
+             <script>
+                 function droppy() {
+                     if ($(document.getElementById('schoolselect')).val() == "other") {
+                         document.getElementById('otherschool').style.display = "block";
+                     } else {
+                         document.getElementById('otherschool').style.display = "none";
+                     }
+                 }
+             </script>
+             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+                 <option value="" selected>Choose...</option>
+                 {% for school in data.schools %}
+                 <option value="{{school}}">{{school}}</option>
+                 {% endfor %}
+                 <option value="other">Other (please enter):</option>
+                 <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder=""
+                     style="display:none;">
+             </select>
+         </div>
+</div>
+
+ 
+<div id="first-section">
       <fieldset>
              <legend>Select the appropriate choice:</legend>
              <label><input type="radio" name="main-choice" value="choice1" onclick="handleMainChoice()"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
