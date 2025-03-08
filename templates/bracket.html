@@ -549,18 +549,44 @@
          document.getElementById('school').textContent = school;
      }
 
-
-    
-
-    
-    
     <div class="form-row">
-       
+        <div class="form-group col">
+            <label>Group Affiliation</label>
+            <script>
+                function droppy() {
+                    if ($(document.getElementById('schoolselect')).val() == "other") {
+                        document.getElementById('otherschool').style.display = "block";
+                    } else {
+                        document.getElementById('otherschool').style.display = "none";
+                    }
+                }
+            </script>
+            <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+                <option value="" selected>Choose...</option>
+                {% for school in data.schools %}
+                <option value="{{school}}">{{school}}</option>
+                {% endfor %}
+                <option value="other">Other (please enter):</option>
+                <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder=""
+                    style="display:none;">
+            </select>
+        </div>
+        <div class="form-group col">
+            <label>College Basketball Knowledge</label>
+            <select name="knowledge" class="custom-select" required>
+                <option value="" selected>Choose...</option>
+                <option value="0">None</option>
+                <option value="1">Little</option>
+                <option value="2">Moderate</option>
+                <option value="3">A Lot</option>
+            </select>
+        </div>
     </div>
+    
 
-    <div class="form-row">
-       
-    </div>
+    
+    
+
 
     <h3>{{data.southname}}</h3>
     <hr> {{wholebracket("south",data.competing.southteams)}}
