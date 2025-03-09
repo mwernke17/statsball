@@ -882,17 +882,18 @@ function handleMainChoice() {
         // Debugging log to check if the section is found
         console.log("Section ID:", sectionId, "Found:", section);
 
+        // Check if the section ID matches the selected choice
         if (mainChoice !== sectionId.replace('choice-', '')) {
             // Hide section if not selected
-            section.style.display = 'none';  // Hide the section
+            section.classList.add('hidden');  // Add the 'hidden' class to hide the section
             inputs.forEach(input => {
                 input.disabled = true; // Disable the inputs in this section
                 input.removeAttribute('required'); // Remove the "required" attribute from inputs
             });
             console.log("Hiding:", sectionId);
         } else {
-            // Show selected section
-            section.style.display = 'block';  // Make the section visible
+            // Show the selected section
+            section.classList.remove('hidden');  // Remove the 'hidden' class to show the section
             inputs.forEach(input => {
                 input.disabled = false; // Enable the inputs in this section
                 input.setAttribute('required', 'required'); // Reapply the "required" attribute
