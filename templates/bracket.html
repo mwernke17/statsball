@@ -1,11 +1,10 @@
-{% extends "template.html" %} {% block content %}
+{% extends "template.html" %} 
+{% block content %}
 
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <form action="{{ url_for('handle_data') }}" method="post">
-
 
 <style>
     .hidden { display: none; }
@@ -23,6 +22,7 @@
              <label><input type="radio" name="main-choice" value="choice7"> I am an adult filling out a bracket for my child under 13 years of age.</label>
       </fieldset>
 </div>
+
  
 <!-- Choice 1: Elementary or Middle School Student -->
 <div id="choice-1-section" class="hidden">
@@ -849,22 +849,6 @@
 </script>
 
 <script>
-    function toggleOtherSchool() {
-        const schoolSelect = document.getElementById("schoolselect5");
-        const otherSchoolInput = document.getElementById("otherschool5");
-
-        if (schoolSelect.value === "other") {
-            otherSchoolInput.style.display = "block";
-            otherSchoolInput.required = true; // Make it required when visible
-        } else {
-            otherSchoolInput.style.display = "none";
-            otherSchoolInput.required = false; // Remove required if hidden
-            otherSchoolInput.value = ""; // Clear input field if hidden
-        }
-    }
-</script>
-
-<script>
     document.addEventListener('DOMContentLoaded', function() {
         const firstSection = document.getElementById('first-section');
         const sections = [
@@ -887,10 +871,8 @@
             sections.forEach(function(sectionId) {
                 const section = document.getElementById(sectionId);
                 if (selectedChoice === sectionId.replace('choice-', '')) {
-                    section.classList.remove('hidden'); // Remove hidden class
                     section.style.display = 'block'; // Show selected section
                 } else {
-                    section.classList.add('hidden'); // Add hidden class
                     section.style.display = 'none'; // Hide other sections
                 }
             });
@@ -909,10 +891,7 @@
     });
 </script>
 
- 
 </form>
-
-
 
 <script src="static/js/bracket.js"></script>
 {% endblock %}
