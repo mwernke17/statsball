@@ -888,6 +888,7 @@
                 const section = document.getElementById(sectionId);
                 if (selectedChoice === sectionId.replace('choice-', '')) {
                     section.style.display = 'block'; // Show selected section
+                    section.classList.remove('hidden'); // Make sure the section is not hidden
                 } else {
                     section.style.display = 'none'; // Hide other sections
                 }
