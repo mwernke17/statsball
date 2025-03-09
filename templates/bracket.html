@@ -38,8 +38,13 @@
                 <input type="number" name="lastname" class="form-control" step="1" min="1" max="99" required>
          </div>
          <div class="form-group col">
-             <label>Select Group</label>
-                 <input type="text" name="school" class="form-control" placeholder="School" required>
+             <label>Select Class Code</label>
+             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+                 <option value="" selected>Choose...</option>
+                 {% for school in data.schools %}
+                 <option value="{{school}}">{{school}}</option>
+                 {% endfor %}
+             </select>
          </div>
       </div>
       <div class="form-row">
@@ -134,8 +139,13 @@
    <legend>High School Student with Class Code</legend>
      <div class="form-row">
          <div class="form-group col">
-             <label>Select Group</label>
-                 <input type="text" name="school" class="form-control" placeholder="School" required>
+             <label>Select Class Code</label>
+             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+                 <option value="" selected>Choose...</option>
+                 {% for school in data.schools %}
+                 <option value="{{school}}">{{school}}</option>
+                 {% endfor %}
+             </select>
          </div>
          <div class="form-group col">
              <label>College Basketball Knowledge</label>
@@ -364,8 +374,13 @@
    <legend>13 Years or Older WITH Code</legend>
       <div class="form-row">
        <div class="form-group col">
-             <label>Select Group</label>
-                 <input type="text" name="school" class="form-control" placeholder="School" required>
+             <label>Select Class Code</label>
+             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+                 <option value="" selected>Choose...</option>
+                 {% for school in data.schools %}
+                 <option value="{{school}}">{{school}}</option>
+                 {% endfor %}
+             </select>
          </div>
          <div class="form-group col">
              <label>College Basketball Knowledge</label>
@@ -830,6 +845,16 @@
     <div class="form-row">
         <button type="submit" class="btn btn-success btn-submit">Submit</button>
     </div>
+
+ <script>
+     function droppy() {
+          if ($(document.getElementById('schoolselect')).val() == "other") {
+              document.getElementById('otherschool').style.display = "block";
+            } else {
+              document.getElementById('otherschool').style.display = "none";
+              }
+            }
+</script>
  
 <script>
     function toggleOtherBuilding() {
