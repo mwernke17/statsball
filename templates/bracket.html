@@ -880,7 +880,7 @@
         function handleMainChoice() {
             const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
             if (selectedRadio) {
-                const selectedChoice = selectedRadio.value;
+                const selectedChoice = selectedRadio.value; // Get the selected radio button value
                 console.log("Selected Choice: ", selectedChoice);  // Log the selected choice
 
                 // Hide first section (radio buttons) and show the selected choice section
@@ -889,8 +889,8 @@
                 sections.forEach(function(sectionId) {
                     const section = document.getElementById(sectionId);
                     console.log("Checking section: ", sectionId);  // Log section being checked
-                    console.log("Comparing: ", selectedChoice, " === ", sectionId.replace('choice-', '')); // Log comparison
-                    if (selectedChoice === sectionId.replace('choice-', '')) {
+                    console.log("Comparing: ", selectedChoice, " === ", sectionId.replace('choice-', '').replace('-section', '')); // Log comparison
+                    if (selectedChoice === sectionId.replace('choice-', '').replace('-section', '')) {
                         console.log("Showing section: ", sectionId);  // Log when showing the section
                         section.classList.remove('hidden'); // Show selected section
                     } else {
@@ -919,6 +919,7 @@
         }
     });
 </script>
+
 
 
 </form>
