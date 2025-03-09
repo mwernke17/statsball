@@ -13,13 +13,13 @@
 <div id="first-section">
       <fieldset>
              <legend>Select the appropriate choice:</legend>
-           <label><input type="radio" name="main-choice" value="choice-1"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
-<label><input type="radio" name="main-choice" value="choice-2"> I am a high school student filling out a bracket for my class.</label><br>
-<label><input type="radio" name="main-choice" value="choice-3"> I am a Carmel Clay School employee.</label><br>
-<label><input type="radio" name="main-choice" value="choice-4"> I am 13 years or older and filling out a bracket WITH a group code.</label><br>
-<label><input type="radio" name="main-choice" value="choice-5"> I am a student 13 years or older filling out a bracket WITHOUT a group code.</label><br>
-<label><input type="radio" name="main-choice" value="choice-6"> I am an adult filling out a bracket WITHOUT a group code.</label><br>
-<label><input type="radio" name="main-choice" value="choice-7"> I am an adult filling out a bracket for my child under 13 years of age.</label>
+             <label><input type="radio" name="main-choice" value="choice-1"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
+             <label><input type="radio" name="main-choice" value="choice-2"> I am a high school student filling out a bracket for my class.</label><br>
+             <label><input type="radio" name="main-choice" value="choice-3"> I am a Carmel Clay School employee.</label><br>
+             <label><input type="radio" name="main-choice" value="choice-4"> I am 13 years or older and filling out a bracket WITH a group code.</label><br>
+             <label><input type="radio" name="main-choice" value="choice-5"> I am a student 13 years or older filling out a bracket WITHOUT a group code.</label><br>
+             <label><input type="radio" name="main-choice" value="choice-6"> I am an adult filling out a bracket WITHOUT a group code.</label><br>
+             <label><input type="radio" name="main-choice" value="choice-7"> I am an adult filling out a bracket for my child under 13 years of age.</label>
       </fieldset>
 </div>
 
@@ -889,8 +889,12 @@
                 sections.forEach(function(sectionId) {
                     const section = document.getElementById(sectionId);
                     console.log("Checking section: ", sectionId);  // Log section being checked
-                    console.log("Comparing: ", selectedChoice, " === ", sectionId.replace('choice-', '').replace('-section', '')); // Log comparison
-                    if (selectedChoice === sectionId.replace('choice-', '').replace('-section', '')) {
+
+                    // Ensure the section ID is checked against the selected choice
+                    const cleanSectionId = sectionId.replace('-section', ''); // Strip '-section' from ID for comparison
+                    console.log("Comparing: ", selectedChoice, " === ", cleanSectionId); // Log comparison
+
+                    if (selectedChoice === cleanSectionId) {
                         console.log("Showing section: ", sectionId);  // Log when showing the section
                         section.classList.remove('hidden'); // Show selected section
                     } else {
@@ -919,6 +923,7 @@
         }
     });
 </script>
+
 
 
 
