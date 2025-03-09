@@ -466,14 +466,18 @@
    <legend>Student WITHOUT Group Code</legend>
        <div class="form-row">
              <div class="form-group col">
-                <label>Select Building Location</label>
+                <label>What school do you attend?</label>
                 <select name="school" class="custom-select" id="schoolselect5" onchange="toggleOtherSchool()" required>
                     <option value="" selected>Choose...</option>
                     <option value="1">Carmel HS</option>
                     <option value="2">Clay MS</option>
                     <option value="3">Carmel MS</option>
                     <option value="4">Creekside MS</option>
-                    <option value="5">ESC</option>
+                    <option value="5">Noblesville HS</option>
+                    <option value="6">Westfield HS</option>
+                    <option value="7">Fishers HS</option>
+                    <option value="8">HSE</option>
+                    <option value="9">Zionsville HS</option>              
                     <option value="other">Other (please enter):</option>
                 </select>
                 <input type="text" id="otherschool5" name="other_school" class="form-control" placeholder="Enter Building"
@@ -503,7 +507,7 @@
      <div class="form-row">
          <div class="form-group col">
              <label>Age (years)</label>
-             <input type="number" name="age" class="form-control" step="1" min="13" max="99" required>
+             <input type="number" name="age" class="form-control" step="1" min="13" max="19" required>
          </div>
          <div class="form-group col">
              <label>I write with my</label>
