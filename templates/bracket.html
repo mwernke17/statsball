@@ -196,7 +196,7 @@
       <div class="form-row">
        <div class="form-group col">
                 <label>Select Building Location</label>
-                <select name="school" class="custom-select" id="schoolselect3" onchange="toggleOtherSchool()" required>
+                <select name="school" class="custom-select" id="schoolselect3" onchange="toggleOtherBuilding()" required>
                     <option value="" selected>Choose...</option>
                     <option value="1">Carmel HS</option>
                     <option value="2">Clay MS</option>
@@ -205,7 +205,7 @@
                     <option value="5">ESC</option>
                     <option value="other">Other (please enter):</option>
                 </select>
-                <input type="text" id="otherschool3" name="other_school" class="form-control" placeholder="Enter school name"
+                <input type="text" id="otherschool3" name="other_school" class="form-control" placeholder="Enter Building"
                     style="display:none;">
             </div>
          <div class="form-group col">
@@ -463,7 +463,138 @@
 <!-- Choice 5: Student WITHOUT Code -->
 <div id="choice-5-section" class="hidden">
 <fieldset>
-   <legend>Adult with Group Code</legend>
+   <legend>Student WITHOUT Group Code</legend>
+       <div class="form-row">
+             <div class="form-group col">
+                <label>Select Building Location</label>
+                <select name="school" class="custom-select" id="schoolselect5" onchange="toggleOtherSchool()" required>
+                    <option value="" selected>Choose...</option>
+                    <option value="1">Carmel HS</option>
+                    <option value="2">Clay MS</option>
+                    <option value="3">Carmel MS</option>
+                    <option value="4">Creekside MS</option>
+                    <option value="5">ESC</option>
+                    <option value="other">Other (please enter):</option>
+                </select>
+                <input type="text" id="otherschool5" name="other_school" class="form-control" placeholder="Enter Building"
+                    style="display:none;">
+            </div>
+         <div class="form-group col">
+             <label>College Basketball Knowledge</label>
+             <select name="knowledge" class="custom-select" required>
+                 <option value="" selected>Choose...</option>
+                 <option value="0">None</option>
+                 <option value="1">Little</option>
+                 <option value="2">Moderate</option>
+                 <option value="3">A Lot</option>
+             </select>
+         </div>
+     </div>
+     <div class="form-row">
+         <div class="form-group col">
+             <label>First Name</label>
+             <input type="text" name="firstname" class="form-control" placeholder="First" required>
+         </div>
+         <div class="form-group col">
+             <label>Last Name</label>
+             <input type="text" name="lastname" class="form-control" placeholder="Last" required>
+         </div>
+     </div>
+     <div class="form-row">
+         <div class="form-group col">
+             <label>Age (years)</label>
+             <input type="number" name="age" class="form-control" step="1" min="13" max="99" required>
+         </div>
+         <div class="form-group col">
+             <label>I write with my</label>
+             <select name="persontype" class="custom-select" required>
+                 <option value="" selected>Choose...</option>
+                 <option value="0">Right Hand</option>
+                 <option value="1">Left Hand</option>
+             </select>
+         </div>
+     </div>
+         <div class="form-row">
+         <div class="form-group col">
+              <label>State you live in</label>
+              <select name="state" class="custom-select" required>
+                 <option value="" selected>Choose...</option>
+                      <option value="1">Alabama</option>
+                      <option value="2">Alaska</option>
+                      <option value="3">Arizona</option>
+                      <option value="4">Arkansas</option>
+                      <option value="5">California</option>
+                      <option value="6">Colorado</option>
+                      <option value="7">Connecticut</option>
+                      <option value="8">Delaware</option>
+                      <option value="9">Florida</option>
+                      <option value="10">Georgia</option>
+                      <option value="11">Hawaii</option>
+                      <option value="12">Idaho</option>
+                      <option value="13">Illinois</option>
+                      <option value="14">Indiana</option>
+                      <option value="15">Iowa</option>
+                      <option value="16">Kansas</option>
+                      <option value="17">Kentucky</option>
+                      <option value="18">Louisiana</option>
+                      <option value="19">Maine</option>
+                      <option value="20">Maryland</option>
+                      <option value="21">Massachusetts</option>
+                      <option value="22">Michigan</option>
+                      <option value="23">Minnesota</option>
+                      <option value="24">Mississippi</option>
+                      <option value="25">Missouri</option>
+                      <option value="26">Montana</option>
+                      <option value="27">Nebraska</option>
+                      <option value="28">Nevada</option>
+                      <option value="29">New Hampshire</option>
+                      <option value="30">New Jersey</option>
+                      <option value="31">New Mexico</option>
+                      <option value="32">New York</option>
+                      <option value="33">North Carolina</option>
+                      <option value="34">North Dakota</option>
+                      <option value="35">Ohio</option>
+                      <option value="36">Oklahoma</option>
+                      <option value="37">Oregon</option>
+                      <option value="38">Pennsylvania</option>
+                      <option value="39">Rhode Island</option>
+                      <option value="40">South Carolina</option>
+                      <option value="41">South Dakota</option>
+                      <option value="42">Tennessee</option>
+                      <option value="43">Texas</option>
+                      <option value="44">Utah</option>
+                      <option value="45">Vermont</option>
+                      <option value="46">Virginia</option>
+                      <option value="47">Washington</option>
+                      <option value="48">Washington, D.C.</option>
+                      <option value="49">West Virginia</option>
+                      <option value="50">Wisconsin</option>
+                      <option value="51">Wyoming</option>
+              </select>
+         </div>
+         <div class="form-group col">
+             <label>Email (for sending updated standings)</label>
+             <input type="email" name="email" class="form-control" placeholder="you@example.com">
+         </div>
+        </div>
+ 
+    <h3>{{data.southname}}</h3>
+    <hr> {{wholebracket("south",data.competing.southteams)}}
+    <h3>{{data.westname}}</h3>
+    <hr> {{wholebracket("west",data.competing.westteams)}}
+    <h3>{{data.eastname}}</h3>
+    <hr> {{wholebracket("east",data.competing.eastteams)}}
+    <h3>{{data.midwestname}}</h3>
+    <hr> {{wholebracket("midwest",data.competing.midwestteams)}}
+    <h3>Final Four</h3>
+    <hr>
+    <div class="form-row" style="min-width:800px;">
+        {{simpleRound("F",4,4)}} {{simpleRound("F",5,2)}} {{simpleRound("F",6,1)}}
+    </div>
+    Please do not click submit until you have the entire bracket filled out.
+    <div class="form-row">
+        <button type="submit" class="btn btn-success btn-submit">Submit</button>
+    </div>
 </fieldset>
 </div>
 
@@ -495,9 +626,25 @@
 </script>
 
 <script>
-    function toggleOtherSchool() {
+    function toggleOtherBuilding() {
         const schoolSelect = document.getElementById("schoolselect3");
         const otherSchoolInput = document.getElementById("otherschool3");
+
+        if (schoolSelect.value === "other") {
+            otherSchoolInput.style.display = "block";
+            otherSchoolInput.required = true; // Make it required when visible
+        } else {
+            otherSchoolInput.style.display = "none";
+            otherSchoolInput.required = false; // Remove required if hidden
+            otherSchoolInput.value = ""; // Clear input field if hidden
+        }
+    }
+</script>
+
+<script>
+    function toggleOtherSchool() {
+        const schoolSelect = document.getElementById("schoolselect5");
+        const otherSchoolInput = document.getElementById("otherschool5");
 
         if (schoolSelect.value === "other") {
             otherSchoolInput.style.display = "block";
