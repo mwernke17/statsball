@@ -12,43 +12,47 @@
 </style>
 
 <script>
-function handleMainChoice() {
-    // Get the value of the selected radio button (main-choice)
-    const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
+window.onload = function() {
+    function handleMainChoice() {
+        // Get the value of the selected radio button (main-choice)
+        const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
 
-    // Define the sections for each choice (sections for choice1, choice2, ..., choice7)
-    const sections = ['choice-1-section', 'choice-2-section', 'choice-3-section', 'choice-4-section', 'choice-5-section', 'choice-6-section', 'choice-7-section'];
-    
-    // Loop through all the sections
-    sections.forEach(sectionId => {
-        const section = document.getElementById(sectionId); // Get the section by ID
-        const inputs = section.querySelectorAll('input, select'); // Get all inputs inside this section
+        // Define the sections for each choice (sections for choice1, choice2, ..., choice7)
+        const sections = ['choice-1-section', 'choice-2-section', 'choice-3-section', 'choice-4-section', 'choice-5-section', 'choice-6-section', 'choice-7-section'];
         
-        // Check if the current section is the one selected by the user
-        if (mainChoice !== sectionId.replace('choice-', '')) {
-            section.classList.add('hidden'); // Hide the section if not selected
-            inputs.forEach(input => {
-                input.disabled = true; // Disable the inputs in this section
-                input.removeAttribute('required'); // Remove the "required" attribute from inputs
-            });
-        } else {
-            section.classList.remove('hidden'); // Show the selected section
-            inputs.forEach(input => {
-                input.disabled = false; // Enable the inputs in this section
-                input.setAttribute('required', 'required'); // Reapply the "required" attribute
-            });
-        }
-    });
-}
-    // Add event listeners for the radio buttons (if not already present)
+        // Loop through all the sections
+        sections.forEach(sectionId => {
+            const section = document.getElementById(sectionId); // Get the section by ID
+            const inputs = section.querySelectorAll('input, select'); // Get all inputs inside this section
+            
+            // Check if the current section is the one selected by the user
+            if (mainChoice !== sectionId.replace('choice-', '')) {
+                section.classList.add('hidden'); // Hide the section if not selected
+                inputs.forEach(input => {
+                    input.disabled = true; // Disable the inputs in this section
+                    input.removeAttribute('required'); // Remove the "required" attribute from inputs
+                });
+            } else {
+                section.classList.remove('hidden'); // Show the selected section
+                inputs.forEach(input => {
+                    input.disabled = false; // Enable the inputs in this section
+                    input.setAttribute('required', 'required'); // Reapply the "required" attribute
+                });
+            }
+        });
+    }
+
+    // Add event listeners for the radio buttons
     document.querySelectorAll('input[name="main-choice"]').forEach(radio => {
         radio.addEventListener('click', handleMainChoice);
     });
-    
-    // Optional: Call the function initially to handle the default state
-    handleMainChoice();
-</script>
 
+    // Optional: Call the function initially to handle the default state if any radio button is pre-selected
+    if (document.querySelector('input[name="main-choice"]:checked')) {
+        handleMainChoice();
+    }
+};
+</script>
 
 <div id="first-section">
       <fieldset>
