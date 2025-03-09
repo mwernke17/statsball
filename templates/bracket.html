@@ -14,13 +14,13 @@
 <div id="first-section">
       <fieldset>
              <legend>Select the appropriate choice:</legend>
-             <label><input type="radio" name="main-choice" value="choice1" onclick="handleMainChoice()"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
-             <label><input type="radio" name="main-choice" value="choice2" onclick="handleMainChoice()"> I am a high school student filling out a bracket for my class.</label><br>
-             <label><input type="radio" name="main-choice" value="choice3" onclick="handleMainChoice()"> I am a Carmel Clay School employee.</label><br>
-             <label><input type="radio" name="main-choice" value="choice4" onclick="handleMainChoice()"> I am 13 years or older and filling out a bracket WITH a group code.</label><br>
-             <label><input type="radio" name="main-choice" value="choice5" onclick="handleMainChoice()"> I am a student 13 years or older filling out a bracket WITHOUT a group code.</label><br>
-             <label><input type="radio" name="main-choice" value="choice6" onclick="handleMainChoice()"> I am an adult filling out a bracket WITHOUT a group code.</label><br>
-             <label><input type="radio" name="main-choice" value="choice7" onclick="handleMainChoice()"> I am an adult filling out a bracket for my child under 13 years of age.</label>
+             <label><input type="radio" name="main-choice" value="choice1"> I am an elementary or middle school student filling out a bracket for my class.</label><br>
+             <label><input type="radio" name="main-choice" value="choice2"> I am a high school student filling out a bracket for my class.</label><br>
+             <label><input type="radio" name="main-choice" value="choice3"> I am a Carmel Clay School employee.</label><br>
+             <label><input type="radio" name="main-choice" value="choice4"> I am 13 years or older and filling out a bracket WITH a group code.</label><br>
+             <label><input type="radio" name="main-choice" value="choice5"> I am a student 13 years or older filling out a bracket WITHOUT a group code.</label><br>
+             <label><input type="radio" name="main-choice" value="choice6"> I am an adult filling out a bracket WITHOUT a group code.</label><br>
+             <label><input type="radio" name="main-choice" value="choice7"> I am an adult filling out a bracket for my child under 13 years of age.</label>
       </fieldset>
 </div>
  
@@ -766,43 +766,46 @@
 
     <!-- Your other HTML content -->
 
-    <script>
-        function handleMainChoice() {
-            // Get the value of the selected radio button (main-choice)
-            const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
+<script>
+    // Function that controls which section is displayed based on the radio button choice
+    function handleMainChoice() {
+        // Get the value of the selected radio button (main-choice)
+        const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
 
-            // Define the sections for each choice (sections for choice1, choice2, ..., choice7)
-            const sections = ['choice-1-section', 'choice-2-section', 'choice-3-section', 'choice-4-section', 'choice-5-section', 'choice-6-section', 'choice-7-section'];
+        // Define the sections for each choice (sections for choice1, choice2, ..., choice7)
+        const sections = ['choice-1-section', 'choice-2-section', 'choice-3-section', 'choice-4-section', 'choice-5-section', 'choice-6-section', 'choice-7-section'];
+        
+        // Loop through all the sections
+        sections.forEach(sectionId => {
+            const section = document.getElementById(sectionId); // Get the section by ID
+            const inputs = section.querySelectorAll('input, select'); // Get all inputs inside this section
             
-            // Loop through all the sections
-            sections.forEach(sectionId => {
-                const section = document.getElementById(sectionId); // Get the section by ID
-                const inputs = section.querySelectorAll('input, select'); // Get all inputs inside this section
-                
-                // Check if the current section is the one selected by the user
-                if (mainChoice !== sectionId.replace('choice-', '')) {
-                    section.classList.add('hidden'); // Hide the section if not selected
-                    inputs.forEach(input => {
-                        input.disabled = true; // Disable the inputs in this section
-                        input.removeAttribute('required'); // Remove the "required" attribute from inputs
-                    });
-                } else {
-                    section.classList.remove('hidden'); // Show the selected section
-                    inputs.forEach(input => {
-                        input.disabled = false; // Enable the inputs in this section
-                        input.setAttribute('required', 'required'); // Reapply the "required" attribute
-                    });
-                }
-            });
-        }
+            // Check if the current section is the one selected by the user
+            if (mainChoice !== sectionId.replace('choice-', '')) {
+                section.classList.add('hidden'); // Hide the section if not selected
+                inputs.forEach(input => {
+                    input.disabled = true; // Disable the inputs in this section
+                    input.removeAttribute('required'); // Remove the "required" attribute from inputs
+                });
+            } else {
+                section.classList.remove('hidden'); // Show the selected section
+                inputs.forEach(input => {
+                    input.disabled = false; // Enable the inputs in this section
+                    input.setAttribute('required', 'required'); // Reapply the "required" attribute
+                });
+            }
+        });
+    }
 
+    // Wait for the DOM content to load completely before running the script
+    window.onload = function() {
         // Add event listeners for the radio buttons (if not already present)
         document.querySelectorAll('input[name="main-choice"]').forEach(radio => {
-            radio.addEventListener('click', handleMainChoice);
+            radio.addEventListener('click', handleMainChoice); // Bind the function to radio buttons
         });
 
         // Optional: Call the function initially to handle the default state
-        window.onload = handleMainChoice;
-    </script>
-
+        handleMainChoice();
+    };
+</script>
 
