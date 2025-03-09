@@ -878,29 +878,41 @@
 
         // Function to show/hide sections based on selected radio button
         function handleMainChoice() {
-            const selectedChoice = document.querySelector('input[name="main-choice"]:checked').value;
-            
-            // Hide first section (radio buttons) and show the selected choice section
-            firstSection.style.display = 'none'; // Hide the radio buttons
+            const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
+            if (selectedRadio) {
+                const selectedChoice = selectedRadio.value;
+                console.log("Selected Choice: ", selectedChoice);  // Log the selected choice
 
-            sections.forEach(function(sectionId) {
-                const section = document.getElementById(sectionId);
-                if (selectedChoice === sectionId.replace('choice-', '')) {
-                    section.style.display = 'block'; // Show selected section
-                } else {
-                    section.style.display = 'none'; // Hide other sections
-                }
-            });
+                // Hide first section (radio buttons) and show the selected choice section
+                firstSection.style.display = 'none'; // Hide the radio buttons
+
+                sections.forEach(function(sectionId) {
+                    const section = document.getElementById(sectionId);
+                    if (selectedChoice === sectionId.replace('choice-', '')) {
+                        section.style.display = 'block'; // Show selected section
+                        console.log(`Showing section: ${sectionId}`);  // Log section being shown
+                    } else {
+                        section.style.display = 'none'; // Hide other sections
+                        console.log(`Hiding section: ${sectionId}`);  // Log section being hidden
+                    }
+                });
+            } else {
+                console.log("No radio button selected");
+            }
         }
 
         // Add event listener to each radio button to handle changes
         document.querySelectorAll('input[name="main-choice"]').forEach(function(radio) {
-            radio.addEventListener('change', handleMainChoice);
+            radio.addEventListener('change', function() {
+                console.log("Radio button changed");  // Log when the radio button is changed
+                handleMainChoice();
+            });
         });
 
         // Trigger the function on page load if a radio button is already selected
         const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
         if (selectedRadio) {
+            console.log("Initial radio button selected");
             handleMainChoice();
         }
     });
