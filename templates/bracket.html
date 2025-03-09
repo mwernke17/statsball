@@ -884,16 +884,18 @@
                 console.log("Selected Choice: ", selectedChoice);  // Log the selected choice
 
                 // Hide first section (radio buttons) and show the selected choice section
-                firstSection.style.display = 'none'; // Hide the radio buttons
+                firstSection.classList.add('hidden'); // Hide the radio buttons
 
                 sections.forEach(function(sectionId) {
                     const section = document.getElementById(sectionId);
+                    console.log("Checking section: ", sectionId);  // Log section being checked
+                    console.log("Comparing: ", selectedChoice, " === ", sectionId.replace('choice-', '')); // Log comparison
                     if (selectedChoice === sectionId.replace('choice-', '')) {
-                        section.style.display = 'block'; // Show selected section
-                        console.log(`Showing section: ${sectionId}`);  // Log section being shown
+                        console.log("Showing section: ", sectionId);  // Log when showing the section
+                        section.classList.remove('hidden'); // Show selected section
                     } else {
-                        section.style.display = 'none'; // Hide other sections
-                        console.log(`Hiding section: ${sectionId}`);  // Log section being hidden
+                        console.log("Hiding section: ", sectionId);  // Log when hiding the section
+                        section.classList.add('hidden'); // Hide other sections
                     }
                 });
             } else {
@@ -917,6 +919,7 @@
         }
     });
 </script>
+
 
 </form>
 
