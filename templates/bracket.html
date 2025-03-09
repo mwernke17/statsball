@@ -904,5 +904,18 @@ function handleMainChoice() {
     });
 }
 
+    // Wait for the DOM content to load completely before running the script
+    window.onload = function() {
+        // Add event listeners for the radio buttons (if not already present)
+        document.querySelectorAll('input[name="main-choice"]').forEach(radio => {
+            radio.addEventListener('click', handleMainChoice); // Bind the function to radio buttons
+        });
+
+        // Call the function initially to handle the default state
+        const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
+        if (selectedRadio) {
+            handleMainChoice();  // Trigger the function if a radio button is already selected
+        }
+    };
 </script>
 
