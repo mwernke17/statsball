@@ -136,10 +136,10 @@
 <!-- Choice 2: High School Student with Group Code -->
 <div id="choice-2-section" class="hidden">
 <fieldset>
-   <legend>High School Student with Class Code</legend>
+   <legend>High School Student with Code</legend>
      <div class="form-row">
          <div class="form-group col">
-             <label>Select Class Code</label>
+             <label>Select Code</label>
              <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
                  <option value="" selected>Choose...</option>
                  {% for school in data.schools %}
@@ -374,7 +374,7 @@
    <legend>13 Years or Older WITH Code</legend>
       <div class="form-row">
        <div class="form-group col">
-             <label>Select Class Code</label>
+             <label>Select Code</label>
              <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
                  <option value="" selected>Choose...</option>
                  {% for school in data.schools %}
@@ -606,7 +606,6 @@
         </div>
 </fieldset>
 </div>
-
  
 <!-- Choice 6: Adult WITHOUT Code -->
 <div id="choice-6-section" class="hidden">
@@ -954,9 +953,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
-
-
-
 
 </form>
 
