@@ -8,6 +8,21 @@
     .hidden { display: none; }
 </style>
 
+<div class="form-group col">
+            <label>Building Location</label>
+            <select name="school" class="custom-select" id="schoolselect3" required>
+               <option value="" selected>Choose...</option>
+               <option value="1">Carmel HS</option>
+               <option value="2">Clay MS</option>
+               <option value="3">Carmel MS</option>
+               <option value="4">Creekside MS</option>
+               <option value="5">ESC</option>
+               <option value="other">Other (please enter):</option>
+          </select>
+               <input type="text" id="schoolselect3" name="school" class="form-control" placeholder=""
+                  style="display:none;">
+         </div>
+
 <script>
      function handleMainChoice() {
          const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
