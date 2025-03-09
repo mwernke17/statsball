@@ -863,6 +863,55 @@
         }
     }
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get references to the first section and all choice sections
+        const firstSection = document.getElementById('first-section');
+        const sections = [
+            'choice-1-section', 
+            'choice-2-section', 
+            'choice-3-section', 
+            'choice-4-section', 
+            'choice-5-section', 
+            'choice-6-section', 
+            'choice-7-section'
+        ];
+
+        // Function to handle radio button selection and display relevant section
+        function handleMainChoice() {
+            const selectedChoice = document.querySelector('input[name="main-choice"]:checked').value;
+
+            // Hide the radio button section
+            firstSection.style.display = 'none';
+
+            // Loop through all sections, hide the unselected ones, and show the selected one
+            sections.forEach(function(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (selectedChoice === sectionId.replace('choice-', '')) {
+                    // Show the selected section
+                    section.style.display = 'block';
+                } else {
+                    // Hide the unselected sections
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        // Add event listeners to radio buttons
+        document.querySelectorAll('input[name="main-choice"]').forEach(function(radio) {
+            radio.addEventListener('change', handleMainChoice);
+        });
+
+        // Trigger the function if a radio button is pre-selected when the page loads
+        const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
+        if (selectedRadio) {
+            handleMainChoice();
+        }
+    });
+</script>
+
+ 
 </form>
 
 
