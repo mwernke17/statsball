@@ -64,7 +64,7 @@
          <div class="form-group col">
              <label>Class Code</label>
              <script>
-                 function droppy() {
+                 function droppy2() {
                      if ($(document.getElementById('schoolselect')).val() == "other") {
                          document.getElementById('otherschool').style.display = "block";
                      } else {
@@ -72,7 +72,7 @@
                      }
                  }
              </script>
-             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+             <select name="school" class="custom-select" onchange="droppy2()" id="schoolselect" required>
                  <option value="" selected>Choose...</option>
                  {% for school in data.schools %}
                  <option value="{{school}}">{{school}}</option>
@@ -206,7 +206,7 @@
        <div class="form-group col">
             <label>Building Location</label>
              <script>
-                 function droppy() {
+                 function droppy3() {
                      if ($(document.getElementById('schoolselect')).val() == "other") {
                          document.getElementById('otherschool').style.display = "block";
                      } else {
@@ -214,7 +214,7 @@
                      }
                  }
              </script>
-             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+             <select name="school" class="custom-select" onchange="droppy3()" id="schoolselect" required>
                  <option value="" selected>Choose...</option>
                  <option value="1">Carmel HS</option>
                  <option value="2">Clay MS</option>
@@ -352,7 +352,16 @@
       <div class="form-row">
        <div class="form-group col">
              <label>Group Code</label>
-             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+              <script>
+                 function droppy4() {
+                     if ($(document.getElementById('schoolselect')).val() == "other") {
+                         document.getElementById('otherschool').style.display = "block";
+                     } else {
+                         document.getElementById('otherschool').style.display = "none";
+                     }
+                 }
+             </script>
+             <select name="school" class="custom-select" onchange="droppy4()" id="schoolselect" required>
                  <option value="" selected>Choose...</option>
                  {% for school in data.schools %}
                  <option value="{{school}}">{{school}}</option>
