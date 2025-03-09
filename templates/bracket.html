@@ -849,6 +849,22 @@
 </script>
 
 <script>
+    function toggleOtherSchool() {
+        const schoolSelect = document.getElementById("schoolselect5");
+        const otherSchoolInput = document.getElementById("otherschool5");
+
+        if (schoolSelect.value === "other") {
+            otherSchoolInput.style.display = "block";
+            otherSchoolInput.required = true; // Make it required when visible
+        } else {
+            otherSchoolInput.style.display = "none";
+            otherSchoolInput.required = false; // Remove required if hidden
+            otherSchoolInput.value = ""; // Clear input field if hidden
+        }
+    }
+</script>
+
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const firstSection = document.getElementById('first-section');
         const sections = [
