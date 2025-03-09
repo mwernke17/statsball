@@ -869,38 +869,36 @@
 
 <script>
     // Function that controls which section is displayed based on the radio button choice
-    function handleMainChoice() {
-        // Get the value of the selected radio button (main-choice)
-        const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
-        console.log("Selected choice:", mainChoice);  // Debugging log
+function handleMainChoice() {
+    const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
+    console.log("Selected choice:", mainChoice);  // Debugging log
 
-        // Define the sections for each choice (sections for choice1, choice2, ..., choice7)
-        const sections = ['choice-1-section', 'choice-2-section', 'choice-3-section', 'choice-4-section', 'choice-5-section', 'choice-6-section', 'choice-7-section'];
+    const sections = ['choice-1-section', 'choice-2-section', 'choice-3-section', 'choice-4-section', 'choice-5-section', 'choice-6-section', 'choice-7-section'];
 
-        // Loop through all the sections
-        sections.forEach(sectionId => {
-            const section = document.getElementById(sectionId); // Get the section by ID
-            const inputs = section.querySelectorAll('input, select'); // Get all inputs inside this section
+    sections.forEach(sectionId => {
+        const section = document.getElementById(sectionId); // Get the section by ID
+        const inputs = section.querySelectorAll('input, select'); // Get all inputs inside this section
 
-            // Debugging log to check if the section is found
-            console.log("Section ID:", sectionId, "Found:", section);
+        // Debugging log to check if the section is found
+        console.log("Section ID:", sectionId, "Found:", section);
 
-            // Check if the current section is the one selected by the user
-            if (mainChoice !== sectionId.replace('choice-', '')) {
-                section.classList.add('hidden'); // Hide the section if not selected
-                inputs.forEach(input => {
-                    input.disabled = true; // Disable the inputs in this section
-                    input.removeAttribute('required'); // Remove the "required" attribute from inputs
-                });
-            } else {
-                section.classList.remove('hidden'); // Show the selected section
-                inputs.forEach(input => {
-                    input.disabled = false; // Enable the inputs in this section
-                    input.setAttribute('required', 'required'); // Reapply the "required" attribute
-                });
-            }
-        });
-    }
+        if (mainChoice !== sectionId.replace('choice-', '')) {
+            // Hide section if not selected
+            section.style.display = 'none';  // Instead of using 'hidden' class, directly use display: none
+            inputs.forEach(input => {
+                input.disabled = true; // Disable the inputs in this section
+                input.removeAttribute('required'); // Remove the "required" attribute from inputs
+            });
+        } else {
+            // Show selected section
+            section.style.display = 'block';  // Make the section visible
+            inputs.forEach(input => {
+                input.disabled = false; // Enable the inputs in this section
+                input.setAttribute('required', 'required'); // Reapply the "required" attribute
+            });
+        }
+    });
+}
 
     // Wait for the DOM content to load completely before running the script
     window.onload = function() {
@@ -918,7 +916,6 @@
         }
     };
 </script>
-
 
 <script src="static/js/bracket.js"></script>
 {% endblock %}
