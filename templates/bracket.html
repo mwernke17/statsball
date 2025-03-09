@@ -867,58 +867,5 @@
 
 
 
-<script>
-function handleMainChoice() {
-    // Get the selected radio button's value
-    const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
-    console.log("Selected choice:", mainChoice);  // Debugging log to check selected radio button value
-
-    // Define the section IDs as 'choice1-section', 'choice2-section', etc.
-    const sections = ['choice1-section', 'choice2-section', 'choice3-section', 'choice4-section', 'choice5-section', 'choice6-section', 'choice7-section'];
-
-    sections.forEach(sectionId => {
-        const section = document.getElementById(sectionId);
-        const inputs = section.querySelectorAll('input, select'); // Get all inputs inside this section
-        console.log(`Processing section: ${sectionId}`); // Log which section is being processed
-
-        // Compare the radio button value (choice1, choice2, etc.) with the section ID (choice1-section, choice2-section, etc.)
-        if (sectionId !== `${mainChoice}-section`) {
-            section.classList.add('hidden');
-            inputs.forEach(input => {
-                input.disabled = true;
-                input.removeAttribute('required');
-            });
-            console.log(`Hiding section: ${sectionId}`);
-        } else {
-            section.classList.remove('hidden');
-            inputs.forEach(input => {
-                input.disabled = false;
-                input.setAttribute('required', 'required');
-            });
-            console.log(`Showing section: ${sectionId}`);
-        }
-    });
-}
-
-window.onload = function() {
-    console.log("DOM fully loaded"); // Debugging log to check if window.onload is firing
-
-    // Add event listeners for the radio buttons (if not already present)
-    document.querySelectorAll('input[name="main-choice"]').forEach(radio => {
-        radio.addEventListener('click', handleMainChoice); // Bind the function to radio buttons
-    });
-
-    // Call the function initially to handle the default state if a radio button is already selected
-    const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
-    if (selectedRadio) {
-        handleMainChoice();  // Trigger the function if a radio button is already selected
-    }
-};
-
-
-
-
-</script>
-
 <script src="static/js/bracket.js"></script>
 {% endblock %}
