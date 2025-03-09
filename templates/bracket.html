@@ -13,8 +13,14 @@
 
 <script>
     function handleMainChoice() {
-        // Get the value of the selected radio button (main choice)
-        const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
+        // Get the selected radio button. If none is selected, return early
+        const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
+        if (!selectedRadio) {
+            console.log("No choice selected yet.");
+            return; // Return early if no choice is selected
+        }
+
+        const mainChoice = selectedRadio.value;
 
         // Sections to be displayed based on the choice
         const mainChoiceSection = document.getElementById('first-section'); // The section with the radio buttons
@@ -54,6 +60,7 @@
     // Optional: Call the function initially to handle the default state
     handleMainChoice();
 </script>
+
 
 <div id="first-section">
       <fieldset>
