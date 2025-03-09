@@ -831,8 +831,6 @@
         <button type="submit" class="btn btn-success btn-submit">Submit</button>
     </div>
  
- </form>
-
 <script>
     function toggleOtherBuilding() {
         const schoolSelect = document.getElementById("schoolselect3");
@@ -882,14 +880,13 @@
         function handleMainChoice() {
             const selectedChoice = document.querySelector('input[name="main-choice"]:checked').value;
             
-            // Hide first section and show selected choice section
+            // Hide first section (radio buttons) and show the selected choice section
             firstSection.style.display = 'none'; // Hide the radio buttons
 
             sections.forEach(function(sectionId) {
                 const section = document.getElementById(sectionId);
                 if (selectedChoice === sectionId.replace('choice-', '')) {
                     section.style.display = 'block'; // Show selected section
-                    section.classList.remove('hidden'); // Make sure the section is not hidden
                 } else {
                     section.style.display = 'none'; // Hide other sections
                 }
@@ -909,7 +906,7 @@
     });
 </script>
 
-
+</form>
 
 <script src="static/js/bracket.js"></script>
 {% endblock %}
