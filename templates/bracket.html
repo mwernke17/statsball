@@ -8,18 +8,27 @@
     .hidden { display: none; }
 </style>
 
-<div class="form-group col">
-            <label>Building Location</label>
-            <select name="school" class="custom-select" id="schoolselect3" required>
-               <option value="" selected>Choose...</option>
-               <option value="1">Carmel HS</option>
-               <option value="2">Clay MS</option>
-               <option value="3">Carmel MS</option>
-               <option value="4">Creekside MS</option>
-               <option value="5">ESC</option>
-               <option value="other">Other (please enter):</option>
-               <input type="text" id="schoolselect3" name="school" class="form-control" placeholder=""
-                  style="display:none;">
+       <div class="form-group col">
+             <label>Building Location</label>
+             <script>
+                 function droppy() {
+                     if ($(document.getElementById('schoolselect')).val() == "other") {
+                         document.getElementById('otherschool').style.display = "block";
+                     } else {
+                         document.getElementById('otherschool').style.display = "none";
+                     }
+                 }
+             </script>
+             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+                 <option value="" selected>Choose...</option>
+                 <option value="1">Carmel HS</option>
+                 <option value="2">Clay MS</option>
+                 <option value="3">Carmel MS</option>
+                 <option value="4">Creekside MS</option>
+                 <option value="5">ESC</option>
+                 <option value="other">Other (please enter):</option>
+                 <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder=""
+                     style="display:none;">
              </select>
          </div>
 
@@ -219,18 +228,29 @@
    <legend>Carmel Clay Schools Employee <br> (Select "Submit Bracket" above to reset)</legend>      
       <div class="form-row">
        <div class="form-group col">
-            <label>Building Location</label>
-            <select name="school" class="custom-select" id="schoolselect3" required>
-               <option value="" selected>Choose...</option>
-               <option value="1">Carmel HS</option>
-               <option value="2">Clay MS</option>
-               <option value="3">Carmel MS</option>
-               <option value="4">Creekside MS</option>
-               <option value="5">ESC</option>
-               <option value="other">Other (please enter):</option>
-          </select>
-               <input type="text" id="schoolselect3" name="school" class="form-control" placeholder=""
-                  style="display:none;">
+             <label>Building Location</label>
+ <div class="form-group col">
+             <label>Building Location</label>
+             <script>
+                 function droppy() {
+                     if ($(document.getElementById('schoolselect')).val() == "other") {
+                         document.getElementById('otherschool').style.display = "block";
+                     } else {
+                         document.getElementById('otherschool').style.display = "none";
+                     }
+                 }
+             </script>
+             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+                 <option value="" selected>Choose...</option>
+                 <option value="1">Carmel HS</option>
+                 <option value="2">Clay MS</option>
+                 <option value="3">Carmel MS</option>
+                 <option value="4">Creekside MS</option>
+                 <option value="5">ESC</option>
+                 <option value="other">Other (please enter):</option>
+                 <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder=""
+                     style="display:none;">
+             </select>
          </div>
          <div class="form-group col">
              <label>College Basketball Knowledge</label>
@@ -358,8 +378,8 @@
       <div class="form-row">
        <div class="form-group col">
              <label>Group Code</label>
-              <script>
-                 function droppy4() {
+             <script>
+                 function droppy() {
                      if ($(document.getElementById('schoolselect')).val() == "other") {
                          document.getElementById('otherschool').style.display = "block";
                      } else {
@@ -367,7 +387,7 @@
                      }
                  }
              </script>
-             <select name="school" class="custom-select" onchange="droppy4()" id="schoolselect" required>
+             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
                  <option value="" selected>Choose...</option>
                  {% for school in data.schools %}
                  <option value="{{school}}">{{school}}</option>
