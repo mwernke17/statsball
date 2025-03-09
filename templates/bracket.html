@@ -864,64 +864,70 @@
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const firstSection = document.getElementById('first-section');
-        const sections = [
-            'choice-1-section', 
-            'choice-2-section', 
-            'choice-3-section', 
-            'choice-4-section', 
-            'choice-5-section', 
-            'choice-6-section', 
-            'choice-7-section'
-        ];
+document.addEventListener('DOMContentLoaded', function() {
+    const firstSection = document.getElementById('first-section');
+    const sections = [
+        'choice-1-section',
+        'choice-2-section',
+        'choice-3-section',
+        'choice-4-section',
+        'choice-5-section',
+        'choice-6-section',
+        'choice-7-section'
+    ];
 
-        // Function to show/hide sections based on selected radio button
-        function handleMainChoice() {
-            const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
-            if (selectedRadio) {
-                const selectedChoice = selectedRadio.value; // Get the selected radio button value
-                console.log("Selected Choice: ", selectedChoice);  // Log the selected choice
-
-                // Hide first section (radio buttons) and show the selected choice section
-                firstSection.classList.add('hidden'); // Hide the radio buttons
-
-                sections.forEach(function(sectionId) {
-                    const section = document.getElementById(sectionId);
-                    console.log("Checking section: ", sectionId);  // Log section being checked
-
-                    // Ensure the section ID is checked against the selected choice
-                    const cleanSectionId = sectionId.replace('-section', ''); // Strip '-section' from ID for comparison
-                    console.log("Comparing: ", selectedChoice, " === ", cleanSectionId); // Log comparison
-
-                    if (selectedChoice === cleanSectionId) {
-                        console.log("Showing section: ", sectionId);  // Log when showing the section
-                        section.classList.remove('hidden'); // Show selected section
-                    } else {
-                        console.log("Hiding section: ", sectionId);  // Log when hiding the section
-                        section.classList.add('hidden'); // Hide other sections
-                    }
-                });
-            } else {
-                console.log("No radio button selected");
-            }
-        }
-
-        // Add event listener to each radio button to handle changes
-        document.querySelectorAll('input[name="main-choice"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                console.log("Radio button changed");  // Log when the radio button is changed
-                handleMainChoice();
-            });
-        });
-
-        // Trigger the function on page load if a radio button is already selected
+    // Function to show/hide sections based on selected radio button
+    function handleMainChoice() {
         const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
         if (selectedRadio) {
-            console.log("Initial radio button selected");
-            handleMainChoice();
+            const selectedChoice = selectedRadio.value; // Get the selected radio button value
+            console.log("Selected Choice: ", selectedChoice);  // Log the selected choice
+
+            // Hide first section (radio buttons) and show the selected choice section
+            firstSection.classList.add('hidden'); // Hide the radio buttons
+
+            sections.forEach(function(sectionId) {
+                const section = document.getElementById(sectionId);
+                const inputs = section.querySelectorAll('input, select, textarea'); // Get all form elements in the section
+                console.log("Checking section: ", sectionId);
+
+                // Ensure the section ID is checked against the selected choice
+                const cleanSectionId = sectionId.replace('-section', ''); // Strip '-section' from ID for comparison
+                console.log("Comparing: ", selectedChoice, " === ", cleanSectionId); // Log comparison
+
+                if (selectedChoice === cleanSectionId) {
+                    console.log("Showing section: ", sectionId);  // Log when showing the section
+                    section.classList.remove('hidden'); // Show selected section
+                    // Enable all inputs in the selected section
+                    inputs.forEach(input => input.disabled = false);
+                } else {
+                    console.log("Hiding section: ", sectionId);  // Log when hiding the section
+                    section.classList.add('hidden'); // Hide other sections
+                    // Disable all inputs in the hidden section
+                    inputs.forEach(input => input.disabled = true);
+                }
+            });
+        } else {
+            console.log("No radio button selected");
         }
+    }
+
+    // Add event listener to each radio button to handle changes
+    document.querySelectorAll('input[name="main-choice"]').forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            console.log("Radio button changed");  // Log when the radio button is changed
+            handleMainChoice();
+        });
     });
+
+    // Trigger the function on page load if a radio button is already selected
+    const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
+    if (selectedRadio) {
+        console.log("Initial radio button selected");
+        handleMainChoice();
+    }
+});
+
 </script>
 
 
