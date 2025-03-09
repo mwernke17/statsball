@@ -876,7 +876,7 @@ function handleMainChoice() {
     const sections = ['choice-1-section', 'choice-2-section', 'choice-3-section', 'choice-4-section', 'choice-5-section', 'choice-6-section', 'choice-7-section'];
 
     sections.forEach(sectionId => {
-        const section = document.getElementById(sectionId); // Get the section by ID
+        const section = document.getElementById(sectionId);
         const inputs = section.querySelectorAll('input, select'); // Get all inputs inside this section
 
         // Debugging log to check if the section is found
@@ -884,11 +884,12 @@ function handleMainChoice() {
 
         if (mainChoice !== sectionId.replace('choice-', '')) {
             // Hide section if not selected
-            section.style.display = 'none';  // Instead of using 'hidden' class, directly use display: none
+            section.style.display = 'none';  // Hide the section
             inputs.forEach(input => {
                 input.disabled = true; // Disable the inputs in this section
                 input.removeAttribute('required'); // Remove the "required" attribute from inputs
             });
+            console.log("Hiding:", sectionId);
         } else {
             // Show selected section
             section.style.display = 'block';  // Make the section visible
@@ -896,25 +897,26 @@ function handleMainChoice() {
                 input.disabled = false; // Enable the inputs in this section
                 input.setAttribute('required', 'required'); // Reapply the "required" attribute
             });
+            console.log("Showing:", sectionId);
         }
     });
 }
 
-    // Wait for the DOM content to load completely before running the script
-    window.onload = function() {
-        console.log("DOM fully loaded"); // Debugging log to check if window.onload is firing
+window.onload = function() {
+    console.log("DOM fully loaded"); // Debugging log to check if window.onload is firing
 
-        // Add event listeners for the radio buttons (if not already present)
-        document.querySelectorAll('input[name="main-choice"]').forEach(radio => {
-            radio.addEventListener('click', handleMainChoice); // Bind the function to radio buttons
-        });
+    // Add event listeners for the radio buttons (if not already present)
+    document.querySelectorAll('input[name="main-choice"]').forEach(radio => {
+        radio.addEventListener('click', handleMainChoice); // Bind the function to radio buttons
+    });
 
-        // Call the function initially to handle the default state
-        const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
-        if (selectedRadio) {
-            handleMainChoice();  // Trigger the function if a radio button is already selected
-        }
-    };
+    // Call the function initially to handle the default state
+    const selectedRadio = document.querySelector('input[name="main-choice"]:checked');
+    if (selectedRadio) {
+        handleMainChoice();  // Trigger the function if a radio button is already selected
+    }
+};
+
 </script>
 
 <script src="static/js/bracket.js"></script>
