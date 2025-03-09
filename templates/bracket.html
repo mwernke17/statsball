@@ -868,7 +868,7 @@
 
 
 <script>
-    // Function that controls which section is displayed based on the radio button choice
+// Function that controls which section is displayed based on the radio button choice
 function handleMainChoice() {
     const mainChoice = document.querySelector('input[name="main-choice"]:checked').value;
     console.log("Selected choice:", mainChoice);  // Debugging log
@@ -883,7 +883,7 @@ function handleMainChoice() {
         console.log("Section ID:", sectionId, "Found:", section);
 
         // Check if the section ID matches the selected choice
-        if (mainChoice !== sectionId.replace('choice-', '')) {
+        if (`choice-${mainChoice}-section` !== sectionId) {
             // Hide section if not selected
             section.classList.add('hidden');  // Add the 'hidden' class to hide the section
             inputs.forEach(input => {
@@ -917,6 +917,7 @@ window.onload = function() {
         handleMainChoice();  // Trigger the function if a radio button is already selected
     }
 };
+
 
 </script>
 
