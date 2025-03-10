@@ -28,15 +28,7 @@
 <div id="choice-1-section" class="hidden">
 <fieldset>
    <legend>Elementary/Middle School Student with Code</legend>
-      <div class="form-row">
-         <div class="form-group col">
-             <label>First Name</label>
-             <input type="text" name="firstname" class="form-control" placeholder="First" required>
-         </div>
-         <div class="form-group col">
-             <label>Last Name</label>
-             <input type="text" name="lastname" class="form-control" placeholder="Last" required>
-         </div>
+     <div class="form-row">
          <div class="form-group col">
              <label>Select Code</label>
              <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
@@ -45,12 +37,6 @@
                  <option value="{{school}}">{{school}}</option>
                  {% endfor %}
              </select>
-         </div>
-      </div>
-        <div class="form-row">
-          <div class="form-group col">
-             <label>Age (years)</label>
-             <input type="number" name="age" class="form-control" step="1" min="13" max="18" required>
          </div>
          <div class="form-group col">
              <label>College Basketball Knowledge</label>
@@ -64,7 +50,21 @@
          </div>
      </div>
      <div class="form-row">
-          <div class="form-group col">
+         <div class="form-group col">
+             <label>First Name</label>
+             <input type="text" name="firstname" class="form-control" placeholder="First" required>
+         </div>
+         <div class="form-group col">
+             <label>Last Name</label>
+             <input type="text" name="lastname" class="form-control" placeholder="Last" required>
+         </div>
+     </div>
+     <div class="form-row">
+         <div class="form-group col">
+             <label>Age (years)</label>
+             <input type="number" name="age" class="form-control" step="1" min="13" max="19" required>
+         </div>
+         <div class="form-group col">
              <label>I write with my</label>
              <select name="persontype" class="custom-select" required>
                  <option value="" selected>Choose...</option>
@@ -72,6 +72,8 @@
                  <option value="1">Left Hand</option>
              </select>
          </div>
+     </div>
+         <div class="form-row">
          <div class="form-group col">
               <label>State you live in</label>
               <select name="state" class="custom-select" required>
@@ -129,7 +131,11 @@
                       <option value="51">Wyoming</option>
               </select>
          </div>
-      </div>    
+         <div class="form-group col">
+             <label>Email (for sending updated standings)</label>
+             <input type="email" name="email" class="form-control" placeholder="you@example.com">
+         </div>
+        </div>
 </fieldset>
 </div>
 
