@@ -859,16 +859,22 @@
         <button type="submit" class="btn btn-success btn-submit">Submit</button>
     </div>
 
- <script>
-     function droppy() {
-          if ($(document.getElementById('schoolselect')).val() == "other") {
-              document.getElementById('otherschool').style.display = "block";
-            } else {
-              document.getElementById('otherschool').style.display = "none";
-              }
-            }
+<script>
+function droppy() {
+    var schoolSelect = document.getElementById("schoolselect");
+    var otherSchoolInput = document.getElementById("otherschool");
+
+    if (schoolSelect.value === "other") {
+        otherSchoolInput.style.display = "block";
+        otherSchoolInput.required = true; // Make it required when visible
+    } else {
+        otherSchoolInput.style.display = "none";
+        otherSchoolInput.required = false; // Remove requirement when hidden
+    }
+}
 </script>
- 
+
+
 <script>
     function toggleOtherBuilding() {
         const schoolSelect = document.getElementById("schoolselect3");
