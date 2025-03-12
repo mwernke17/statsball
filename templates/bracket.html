@@ -730,7 +730,7 @@
       <div class="form-row">
 <div class="form-group col">
     <label>Select Code</label>
-    <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+    <select name="school" class="custom-select" onchange="droppy()" id="schoolselect7" required>
         <option value="" selected>Choose...</option>
         {% for school in data.schools %}
         <option value="{{school}}">{{school}}</option>
@@ -738,7 +738,7 @@
         <option value="other">Other (please enter)</option>
     </select>
     <!-- This input is hidden until 'Other' is selected -->
-    <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder="Enter school name" 
+    <input type="text" id="otherschool7" name="otherschool" class="form-control" placeholder="Enter school name" 
            style="display:none; margin-top: 10px;">
 </div>
          <div class="form-group col">
@@ -907,6 +907,22 @@
     }
 </script>
 
+<script>
+    function toggleOtherSchool() {
+        const schoolSelect = document.getElementById("schoolselect7");
+        const otherSchoolInput = document.getElementById("otherschool7");
+
+        if (schoolSelect.value === "other") {
+            otherSchoolInput.style.display = "block";
+            otherSchoolInput.required = true; // Make it required when visible
+        } else {
+            otherSchoolInput.style.display = "none";
+            otherSchoolInput.required = false; // Remove required if hidden
+            otherSchoolInput.value = ""; // Clear input field if hidden
+        }
+    }
+</script>
+ 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const firstSection = document.getElementById('first-section');
