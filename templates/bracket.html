@@ -729,17 +729,17 @@
    <hr></legend>
       <div class="form-row">
 <div class="form-group col">
-    <label>Select Code</label>
-    <select name="school" class="custom-select" onchange="droppy()" id="schoolselect7" required>
-        <option value="" selected>Choose...</option>
-        {% for school in data.schools %}
-        <option value="{{school}}">{{school}}</option>
-        {% endfor %}
-        <option value="other">Other (please enter)</option>
-    </select>
-    <!-- This input is hidden until 'Other' is selected -->
-    <input type="text" id="otherschool7" name="otherschool" class="form-control" placeholder="Enter school name" 
-           style="display:none; margin-top: 10px;">
+              <label>Select Code</label>
+              <select name="school" class="custom-select" onchange="toggleOtherSchool()" id="schoolselect7" required>
+                  <option value="" selected>Choose...</option>
+                  {% for school in data.schools %}
+                  <option value="{{school}}">{{school}}</option>
+                  {% endfor %}
+                  <option value="other">Other (please enter)</option>
+              </select>
+              <!-- This input is hidden until 'Other' is selected -->
+              <input type="text" id="otherschool7" name="otherschool" class="form-control" placeholder="Enter school name" 
+                     style="display:none; margin-top: 10px;">
 </div>
          <div class="form-group col">
              <label>College Basketball Knowledge</label>
