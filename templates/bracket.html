@@ -735,14 +735,11 @@
         {% for school in data.schools %}
         <option value="{{school}}">{{school}}</option>
         {% endfor %}
-        <option value="other">Other (please enter):</option>
+        <option value="other">Other (please enter)</option>
     </select>
-</div>
-
-<!-- Input field for "Other" option -->
-<div class="form-group col" id="otherSchoolDiv" style="display: none;">
-    <label>Enter Your School Name</label>
-    <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder="Enter school name" disabled>
+    <!-- This input is hidden until 'Other' is selected -->
+    <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder="Enter school name" 
+           style="display:none; margin-top: 10px;">
 </div>
          <div class="form-group col">
              <label>College Basketball Knowledge</label>
@@ -864,23 +861,20 @@
     </div>
 
  <script>
-function droppy() {
-    var schoolSelect = document.getElementById("schoolselect");
-    var otherSchoolDiv = document.getElementById("otherSchoolDiv");
-    var otherSchoolInput = document.getElementById("otherschool");
+    function droppy() {
+        var schoolSelect = document.getElementById("schoolselect");
+        var otherSchoolInput = document.getElementById("otherschool");
 
-    if (schoolSelect.value === "other") {
-        otherSchoolDiv.style.display = "block";
-        otherSchoolInput.disabled = false;  // Enable input when "Other" is selected
-        otherSchoolInput.required = true;   // Make it required
-    } else {
-        otherSchoolDiv.style.display = "none";
-        otherSchoolInput.disabled = true;   // Disable input when another school is selected
-        otherSchoolInput.required = false;  // Remove required attribute
+        if (schoolSelect.value === "other") {
+            otherSchoolInput.style.display = "block";
+            otherSchoolInput.required = true;  // Make the field required when visible
+        } else {
+            otherSchoolInput.style.display = "none";
+            otherSchoolInput.required = false; // Remove required when hidden
+            otherSchoolInput.value = ""; // Clear input field when hidden
+        }
     }
-}
 </script>
- 
 <script>
     function toggleOtherBuilding() {
         const schoolSelect = document.getElementById("schoolselect3");
