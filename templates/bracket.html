@@ -729,17 +729,19 @@
    <hr></legend>
        <div class="form-row">
           <div class="form-group col">
-              <label>Choose your group code, or enter your school by choosing other.</label>
-                <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
-                <option value="" selected>Choose...</option>
-                {% for school in data.schools %}
-                <option value="{{school}}">{{school}}</option>
-                {% endfor %}
-               
-                <option value="other">Other (please enter):</option>
-                <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder=""
-                    style="display:none;"> 
-                </select>
+<div class="form-group col">
+    <label>Choose your group code, or enter your school by choosing other.</label>
+    <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+        <option value="" selected>Choose...</option>
+        {% for school in data.schools %}
+        <option value="{{school}}">{{school}}</option>
+        {% endfor %}
+        <option value="other">Other (please enter):</option>
+    </select>
+    <!-- Moved input outside of the <select> -->
+    <input type="text" id="otherschool" name="otherschool" class="form-control" 
+        placeholder="Enter your school" style="display:none;">
+</div>
           </div>
          <div class="form-group col">
              <label>College Basketball Knowledge</label>
