@@ -728,15 +728,22 @@
     <p style="font-size:16px">This site does not collect any information beyond the questions provided below. The information provided below will be stored in a database through the cloud-based platrom Heroku which is hosting this website. The name (first and last), group affiliation/school, college basketball knowledge and bracket score will be posted in the Standings page. Individual bracket picks can be viewed by clicking any row in the standings table. The individual data can only be accessed by the teacher Matt Wernke. If you have specific questions regarding the handling of data, please click <a href="mailto:mwernke@ccs.k12.in.us">HERE</a> to send me an email.</p>
    <hr></legend>
       <div class="form-row">
-       <div class="form-group col">
-             <label>Select Code</label>
-             <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
-                 <option value="" selected>Choose...</option>
-                 {% for school in data.schools %}
-                 <option value="{{school}}">{{school}}</option>
-                 {% endfor %}
-             </select>
-         </div>
+<div class="form-group col">
+    <label>Select Code</label>
+    <select name="school" class="custom-select" onchange="droppy()" id="schoolselect" required>
+        <option value="" selected>Choose...</option>
+        {% for school in data.schools %}
+        <option value="{{school}}">{{school}}</option>
+        {% endfor %}
+        <option value="other">Other (please enter):</option>
+    </select>
+</div>
+
+<!-- Input field for "Other" option -->
+<div class="form-group col" id="otherSchoolDiv" style="display: none;">
+    <label>Enter Your School Name</label>
+    <input type="text" id="otherschool" name="otherschool" class="form-control" placeholder="Enter school name" disabled>
+</div>
          <div class="form-group col">
              <label>College Basketball Knowledge</label>
              <select name="knowledge" class="custom-select" required>
@@ -857,13 +864,21 @@
     </div>
 
  <script>
-     function droppy() {
-          if ($(document.getElementById('schoolselect')).val() == "other") {
-              document.getElementById('otherschool').style.display = "block";
-            } else {
-              document.getElementById('otherschool').style.display = "none";
-              }
-            }
+function droppy() {
+    var schoolSelect = document.getElementById("schoolselect");
+    var otherSchoolDiv = document.getElementById("otherSchoolDiv");
+    var otherSchoolInput = document.getElementById("otherschool");
+
+    if (schoolSelect.value === "other") {
+        otherSchoolDiv.style.display = "block";
+        otherSchoolInput.disabled = false;  // Enable input when "Other" is selected
+        otherSchoolInput.required = true;   // Make it required
+    } else {
+        otherSchoolDiv.style.display = "none";
+        otherSchoolInput.disabled = true;   // Disable input when another school is selected
+        otherSchoolInput.required = false;  // Remove required attribute
+    }
+}
 </script>
  
 <script>
